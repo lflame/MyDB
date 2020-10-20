@@ -22,9 +22,11 @@ public:
 	 * 缓存页面数组
 	 */
 	BufType* addr;
+	// allocate 一个页面(8KB)的空间
 	BufType allocMem() {
 		return new unsigned int[(PAGE_SIZE >> 2)];
 	}
+	// 取出 (typeID, pageID) 对应的页放入缓存中，返回该页在缓存中的地址（类型为 BufType）
 	BufType fetchPage(int typeID, int pageID, int& index) {
 		BufType b;
 		index = replace->find();

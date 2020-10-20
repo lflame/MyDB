@@ -12,7 +12,9 @@ using namespace std;
 class FileManager {
 private:
 	//FileTable* ftable;
+	// fd[fileID] 为 fileID 对应的 handler 值
 	int fd[MAX_FILE_NUM];
+	// fm[fileID] 为 0 表示 fileID 对应文件被打开
 	MyBitMap* fm;
 	MyBitMap* tm;
 	int _createFile(const char* name) {
