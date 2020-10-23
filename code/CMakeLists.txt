@@ -1,26 +1,8 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.10.2)
-PROJECT(MyDB)
+cmake_minimum_required(VERSION 3.18.4)
+project(MyDB LANGUAGES CXX)
 
-IF(NOT CMAKE_BUILD_TYPE)
-    SET(CMAKE_BUILD_TYPE Release)
-ENDIF()
+add_executable(MyDB src/main.cpp)
+target_include_directories(MyDB PUBLIC ${CMAKE_SOURCE_DIR}/src/filesystem/bufmanager
+                                PUBLIC ${CMAKE_SOURCE_DIR}/src/filesystem/fileio
+                                PUBLIC ${CMAKE_SOURCE_DIR}/src/filesystem/utils)
 
-# add_compile_options(-g)
-# add_compile_options(-O0)
-add_compile_options(-O3)
-
-
-SET(MyDB_SOURCES
-        src/image.cpp
-        src/main.cpp
-        src/mesh.cpp
-        src/scene_parser.cpp
-        src/utils.cpp
-        )
-
-
-SET(CMAKE_CXX_STANDARD 11)
-SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
-
-ADD_EXECUTABLE(${PROJECT_NAME} ${MyDB_SOURCES})
-TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PRIVATE include)
