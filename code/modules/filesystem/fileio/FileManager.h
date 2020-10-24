@@ -101,11 +101,11 @@ public:
 	 * @函数名createFile
 	 * @参数name:文件名
 	 * 功能:新建name指定的文件名
-	 * 返回:操作成功，返回true
+	 * 返回:操作成功，返回0
 	 */
-	bool createFile(const char* name) {
+	int createFile(const char* name) {
 		_createFile(name);
-		return true;
+		return 0;
 	}
 	/*
 	 * @函数名openFile

@@ -174,5 +174,11 @@ public:
 			addr[i] = NULL;
 		}
 	}
+
+	BufPageManager() = delete;
+
+	~BufPageManager() {
+		delete fileManager;
+	}	
 };
 #endif
