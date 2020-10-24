@@ -7,6 +7,7 @@ typedef int PageNum;
 typedef int SlotNum;
 
 struct RID {
+    // pageNum 为记录所在页数， slotNum 为记录所在槽数（从 0 开始计数）
     PageNum pageNum = 0;
     SlotNum slotNum = 0;
 
@@ -20,9 +21,24 @@ struct RID {
     }
 };
 
+struct Record {
+    // data 为数据指针
+    char *data = nullptr;
+
+    Record(int recSize) {
+        data = new char[recSize];
+    }
+
+    ~Record() {
+        if (data != nullptr)
+            delete[] data;
+    }
+};
+
 class RecordManager {
   public:
     BufPageManager *bufPageManager;
+    int recSize, recNumPerPage, recNumTot;
 
     RecordManager();
 
@@ -38,7 +54,7 @@ class RecordManager {
      * 成功打开文件则返回 0
      * TODO: 错误处理
      */
-    int openFile(const char *name, int recSize);
+    int openFile(const char *name, int inRecSize);
 
     // 成功关闭文件则返回 0
     int closeFile();

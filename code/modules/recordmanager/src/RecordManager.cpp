@@ -19,7 +19,7 @@ void RecordManager::deleteFile(const char *name) {
     remove(name);
 }
 
-int RecordManager::openFile(const char *name, int recSize) {
+int RecordManager::openFile(const char *name, int inRecSize) {
     assert(_fileId == -1);
     return bufPageManager->fileManager->openFile(name, _fileId);
 }
