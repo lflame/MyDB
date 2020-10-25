@@ -76,27 +76,27 @@ include modules/logger/CMakeFiles/Logger.dir/progress.make
 # Include the compile flags for this target's objects.
 include modules/logger/CMakeFiles/Logger.dir/flags.make
 
-modules/logger/CMakeFiles/Logger.dir/src/logger.cpp.o: modules/logger/CMakeFiles/Logger.dir/flags.make
-modules/logger/CMakeFiles/Logger.dir/src/logger.cpp.o: ../modules/logger/src/logger.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object modules/logger/CMakeFiles/Logger.dir/src/logger.cpp.o"
-	cd /home/yyr/Work/MyDB/code/build/modules/logger && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Logger.dir/src/logger.cpp.o -c /home/yyr/Work/MyDB/code/modules/logger/src/logger.cpp
+modules/logger/CMakeFiles/Logger.dir/src/Logger.cpp.o: modules/logger/CMakeFiles/Logger.dir/flags.make
+modules/logger/CMakeFiles/Logger.dir/src/Logger.cpp.o: ../modules/logger/src/Logger.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object modules/logger/CMakeFiles/Logger.dir/src/Logger.cpp.o"
+	cd /home/yyr/Work/MyDB/code/build/modules/logger && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Logger.dir/src/Logger.cpp.o -c /home/yyr/Work/MyDB/code/modules/logger/src/Logger.cpp
 
-modules/logger/CMakeFiles/Logger.dir/src/logger.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Logger.dir/src/logger.cpp.i"
-	cd /home/yyr/Work/MyDB/code/build/modules/logger && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yyr/Work/MyDB/code/modules/logger/src/logger.cpp > CMakeFiles/Logger.dir/src/logger.cpp.i
+modules/logger/CMakeFiles/Logger.dir/src/Logger.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Logger.dir/src/Logger.cpp.i"
+	cd /home/yyr/Work/MyDB/code/build/modules/logger && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yyr/Work/MyDB/code/modules/logger/src/Logger.cpp > CMakeFiles/Logger.dir/src/Logger.cpp.i
 
-modules/logger/CMakeFiles/Logger.dir/src/logger.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Logger.dir/src/logger.cpp.s"
-	cd /home/yyr/Work/MyDB/code/build/modules/logger && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yyr/Work/MyDB/code/modules/logger/src/logger.cpp -o CMakeFiles/Logger.dir/src/logger.cpp.s
+modules/logger/CMakeFiles/Logger.dir/src/Logger.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Logger.dir/src/Logger.cpp.s"
+	cd /home/yyr/Work/MyDB/code/build/modules/logger && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yyr/Work/MyDB/code/modules/logger/src/Logger.cpp -o CMakeFiles/Logger.dir/src/Logger.cpp.s
 
 # Object files for target Logger
 Logger_OBJECTS = \
-"CMakeFiles/Logger.dir/src/logger.cpp.o"
+"CMakeFiles/Logger.dir/src/Logger.cpp.o"
 
 # External object files for target Logger
 Logger_EXTERNAL_OBJECTS =
 
-modules/logger/libLogger.a: modules/logger/CMakeFiles/Logger.dir/src/logger.cpp.o
+modules/logger/libLogger.a: modules/logger/CMakeFiles/Logger.dir/src/Logger.cpp.o
 modules/logger/libLogger.a: modules/logger/CMakeFiles/Logger.dir/build.make
 modules/logger/libLogger.a: modules/logger/CMakeFiles/Logger.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libLogger.a"

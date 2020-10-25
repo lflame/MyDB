@@ -1,7 +1,8 @@
+#include "RecordManager.h"
 #include "netinet/in.h"
 #include "cstring"
 #include "cassert"
-#include "RecordManager.h"
+#include "Logger.h"
 
 RecordManager::RecordManager() {
     bufPageManager = new BufPageManager(new FileManager);

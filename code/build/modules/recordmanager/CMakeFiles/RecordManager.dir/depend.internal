@@ -9,5 +9,6 @@ modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o
  ../modules/filesystem/utils/MyHashMap.h
  ../modules/filesystem/utils/MyLinkList.h
  ../modules/filesystem/utils/pagedef.h
+ ../modules/logger/include/Logger.h
  ../modules/recordmanager/include/RecordManager.h
  /home/yyr/Work/MyDB/code/modules/recordmanager/src/RecordManager.cpp

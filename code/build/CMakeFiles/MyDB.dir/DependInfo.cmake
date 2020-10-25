@@ -14,11 +14,13 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../modules/recordmanager/../filesystem/bufmanager"
   "../modules/recordmanager/../filesystem/fileio"
   "../modules/recordmanager/../filesystem/utils"
+  "../modules/logger/include"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/yyr/Work/MyDB/code/build/modules/recordmanager/CMakeFiles/RecordManager.dir/DependInfo.cmake"
+  "/home/yyr/Work/MyDB/code/build/modules/logger/CMakeFiles/Logger.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

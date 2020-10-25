@@ -8,3 +8,4 @@ target_include_directories(RecordManager PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../f
                                          PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../filesystem/fileio
                                          PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../filesystem/utils)
 
+target_link_libraries(RecordManager Logger)

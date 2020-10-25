@@ -70,6 +70,8 @@ sys/stat.h
 dirent.h
 -
 
+../modules/logger/include/Logger.h
+
 ../modules/recordmanager/include/RecordManager.h
 BufPageManager.h
 ../modules/recordmanager/include/BufPageManager.h
@@ -77,12 +79,14 @@ FileManager.h
 ../modules/recordmanager/include/FileManager.h
 
 /home/yyr/Work/MyDB/code/modules/recordmanager/src/RecordManager.cpp
+RecordManager.h
+/home/yyr/Work/MyDB/code/modules/recordmanager/src/RecordManager.h
 netinet/in.h
 /home/yyr/Work/MyDB/code/modules/recordmanager/src/netinet/in.h
 cstring
 /home/yyr/Work/MyDB/code/modules/recordmanager/src/cstring
 cassert
 /home/yyr/Work/MyDB/code/modules/recordmanager/src/cassert
-RecordManager.h
-/home/yyr/Work/MyDB/code/modules/recordmanager/src/RecordManager.h
+Logger.h
+/home/yyr/Work/MyDB/code/modules/recordmanager/src/Logger.h
 

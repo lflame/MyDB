@@ -144,32 +144,32 @@ Logger/fast:
 	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/logger/CMakeFiles/Logger.dir/build.make modules/logger/CMakeFiles/Logger.dir/build
 .PHONY : Logger/fast
 
-src/logger.o: src/logger.cpp.o
+src/Logger.o: src/Logger.cpp.o
 
-.PHONY : src/logger.o
+.PHONY : src/Logger.o
 
 # target to build an object file
-src/logger.cpp.o:
-	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/logger/CMakeFiles/Logger.dir/build.make modules/logger/CMakeFiles/Logger.dir/src/logger.cpp.o
-.PHONY : src/logger.cpp.o
+src/Logger.cpp.o:
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/logger/CMakeFiles/Logger.dir/build.make modules/logger/CMakeFiles/Logger.dir/src/Logger.cpp.o
+.PHONY : src/Logger.cpp.o
 
-src/logger.i: src/logger.cpp.i
+src/Logger.i: src/Logger.cpp.i
 
-.PHONY : src/logger.i
+.PHONY : src/Logger.i
 
 # target to preprocess a source file
-src/logger.cpp.i:
-	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/logger/CMakeFiles/Logger.dir/build.make modules/logger/CMakeFiles/Logger.dir/src/logger.cpp.i
-.PHONY : src/logger.cpp.i
+src/Logger.cpp.i:
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/logger/CMakeFiles/Logger.dir/build.make modules/logger/CMakeFiles/Logger.dir/src/Logger.cpp.i
+.PHONY : src/Logger.cpp.i
 
-src/logger.s: src/logger.cpp.s
+src/Logger.s: src/Logger.cpp.s
 
-.PHONY : src/logger.s
+.PHONY : src/Logger.s
 
 # target to generate assembly for a file
-src/logger.cpp.s:
-	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/logger/CMakeFiles/Logger.dir/build.make modules/logger/CMakeFiles/Logger.dir/src/logger.cpp.s
-.PHONY : src/logger.cpp.s
+src/Logger.cpp.s:
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/logger/CMakeFiles/Logger.dir/build.make modules/logger/CMakeFiles/Logger.dir/src/Logger.cpp.s
+.PHONY : src/Logger.cpp.s
 
 # Help Target
 help:
@@ -180,9 +180,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Logger"
-	@echo "... src/logger.o"
-	@echo "... src/logger.i"
-	@echo "... src/logger.s"
+	@echo "... src/Logger.o"
+	@echo "... src/Logger.i"
+	@echo "... src/Logger.s"
 .PHONY : help
 
 

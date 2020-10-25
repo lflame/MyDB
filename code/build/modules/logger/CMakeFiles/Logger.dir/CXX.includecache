@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-../modules/logger/include/logger.h
+../modules/logger/include/Logger.h
 
-/home/yyr/Work/MyDB/code/modules/logger/src/logger.cpp
-logger.h
-/home/yyr/Work/MyDB/code/modules/logger/src/logger.h
+/home/yyr/Work/MyDB/code/modules/logger/src/Logger.cpp
+Logger.h
+/home/yyr/Work/MyDB/code/modules/logger/src/Logger.h
 cstdio
 /home/yyr/Work/MyDB/code/modules/logger/src/cstdio
 

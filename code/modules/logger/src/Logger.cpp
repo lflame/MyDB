@@ -1,4 +1,4 @@
-#include "logger.h"
+#include "Logger.h"
 #include "cstdio"
 
 Logger::Logger(int inLevel) {
