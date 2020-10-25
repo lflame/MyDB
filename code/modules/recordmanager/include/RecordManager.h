@@ -3,21 +3,17 @@
 
 class BufPageManager;
 
-typedef int PageNum;
-typedef int SlotNum;
-
 struct RID {
-    // pageNum 为记录所在页数， slotNum 为记录所在槽数（从 0 开始计数）
-    PageNum pageNum = 0;
-    SlotNum slotNum = 0;
+    // pageId 为记录所在页数， slotId 为记录所在槽数（从 0 开始计数）
+    int pageId = -1, slotId = -1;
 
     bool operator==(const RID &b) {
-        return pageNum == b.pageNum && slotNum == b.slotNum;
+        return pageId == b.pageId && slotId == b.slotId;
     }
 
-    RID(PageNum inPageNum, SlotNum inSlotNum) {
-        pageNum = inPageNum;
-        slotNum = inSlotNum;
+    RID(int inPageId, int inSlotId) {
+        pageId = inPageId;
+        slotId = inSlotId;
     }
 };
 
@@ -35,16 +31,25 @@ struct Record {
     }
 };
 
+enum class FileHeaderPageParameterType {
+    ALL,
+    REC_SIZE,
+    REC_NUM_PER_PAGE,
+    REC_NUM_TOT,
+    PAGE_NUM,
+    USABLE_PAGE_HEADER
+};
+
 class RecordManager {
   public:
     BufPageManager *bufPageManager;
-    int recSize, recNumPerPage, recNumTot;
+    int recSize, recNumPerPage, recNumTot, pageNum, usablePageHeader;
 
     RecordManager();
 
     ~RecordManager();
 
-    void createFile(const char *name);
+    void createFile(const char *name, int inRecSize);
 
     void deleteFile(const char *name);
 
@@ -54,13 +59,31 @@ class RecordManager {
      * 成功打开文件则返回 0
      * TODO: 错误处理
      */
-    int openFile(const char *name, int inRecSize);
+    int openFile(const char *name);
 
     // 成功关闭文件则返回 0
     int closeFile();
 
+    /*
+     * 插入一个记录
+     */
+    void insertRecord();
+
   private:
-    int _fileId = -1;  // 保证只打开一个文件
+    int fileId = -1;  // 保证只打开一个文件
+
+    // 利用相应成员变量读取/写入文件头页的参数
+    void _readFileHeaderPage(FileHeaderPageParameterType type);
+    void _writeFileHeaderPage(FileHeaderPageParameterType type);
+
+    /*
+     * 从 Buf 的 offset （字节）地址开始，写入/读取一个 int, 统一使用网络字节序
+     * @参数 buf：缓存数组指针
+     * @参数 offset：偏移地址(字节)
+     * @参数 value：要读取/写入的值
+     */ 
+    void _readIntFromBuffer(BufType buf, int offset, int &value);
+    void _writeIntToBuffer(BufType buf, int offset, int value);
 };
 
 #endif

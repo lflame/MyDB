@@ -8,9 +8,13 @@
 
 ### 文件存储
 
-* 文件的第一页存储: 每个记录的字节数 recSize、每一页存储的记录个数 recNumPerPage、总记录个数 recNumTot(均为 int 型)，以及
-* 每个数据页存储： 开头消耗 recNumPerPage 位表示每个记录槽是否存放记录，接下来共 recNumPerPage 个记录槽，每个记录槽消耗 recSize 个字节；
+* 文件的第一页存储: 每个记录的字节数 recSize、每一页存储的记录最大个数 recNumPerPage、总记录个数 recNumTot、总页数 pageNum，以及非满页链表表头对应的页数 usablePageHeader(均为 int 型，页数从 1 开始计数)；
+* 每个数据页存储： 开头存储两个 int，分别为 prevUsablePage 和 nextUsablePage，接着使用 recNumPerPage 位表示每个记录槽是否存放记录，接下来 8 位对齐之后共 recNumPerPage 个记录槽，每个记录槽消耗 recSize 个字节。注意需要满足 `8 + (recNumPerPage+7)/8*8 + recSize*recNumPerPage <= PAGE_SIZE`
 
-### RID
 
-RID 为 (pageNum, slotNum) 二元组。
+为提高鲁棒性，在存储 int 时统一使用网络字节序。
+
+### RID 和 Record
+
+* RID 为 (pageNum, slotNum) 二元组，表示该记录所在的页和槽(从 1 开始计数)；
+* Record 存储了一个 char\* 指针指向记录数据。
