@@ -1,5 +1,7 @@
 #ifndef _LOGGER_H_
 #define _LOGGER_H_
+#include "cstdarg"
+#include "cstdio"
 
 class Logger {
   public:
@@ -13,21 +15,28 @@ class Logger {
     // 小于等于此 level 的类型都需要输出
     int level;
 
+    // 单例
+    static Logger logger;
+
     Logger(int inLevel = 5);
 
-    template <typename ...Args>
-    void log(Type type, const char* fmt, const Args&... args);
+    const char* getTypeString(Type type);
 
-    template <typename ...Args>
-    void fatal(const char* fmt, const Args&... args);
-    template <typename ...Args>
-    void error(const char* fmt, const Args&... args);
-    template <typename ...Args>
-    void warning(const char* fmt, const Args&... args);
-    template <typename ...Args>
-    void info(const char* fmt, const Args&... args);
-    template <typename ...Args>
-    void debug(const char* fmt, const Args&... args);
+    void printTag(FILE* file, Type type);
+
+    // template <typename ...Args>
+    // void fatal(const char* fmt, const Args&... args);
+    // template <typename ...Args>
+    // void error(const char* fmt, const Args&... args);
+    // template <typename ...Args>
+    // void warning(const char* fmt, const Args&... args);
+    // template <typename ...Args>
+    // void info(const char* fmt, const Args&... args);
+    void fatal(const char* fmt, ...);
+    void error(const char* fmt, ...);
+    void warning(const char* fmt, ...);
+    void info(const char* fmt, ...);
+    void debug(const char* fmt, ...);
 };
 
 #endif

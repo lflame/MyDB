@@ -6,9 +6,17 @@
 
 #IncludeRegexTransform: 
 
+../modules/logger/include/Logger.h
+cstdarg
+../modules/logger/include/cstdarg
+cstdio
+../modules/logger/include/cstdio
+
 /home/yyr/Work/MyDB/code/src/main.cpp
 cstdio
 /home/yyr/Work/MyDB/code/src/cstdio
 cstring
 /home/yyr/Work/MyDB/code/src/cstring
+Logger.h
+/home/yyr/Work/MyDB/code/src/Logger.h
 

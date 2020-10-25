@@ -71,6 +71,10 @@ dirent.h
 -
 
 ../modules/logger/include/Logger.h
+cstdarg
+../modules/logger/include/cstdarg
+cstdio
+../modules/logger/include/cstdio
 
 ../modules/recordmanager/include/RecordManager.h
 BufPageManager.h
