@@ -75,17 +75,6 @@ CMAKE_BINARY_DIR = /home/yyr/Work/MyDB/code/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -97,16 +86,27 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyr/Work/MyDB/code/build/CMakeFiles /home/yyr/Work/MyDB/code/build//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	cd /home/yyr/Work/MyDB/code/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/yyr/Work/MyDB/code/build/CMakeFiles /home/yyr/Work/MyDB/code/build/modules/recordmanager//CMakeFiles/progress.marks
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 modules/recordmanager/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyr/Work/MyDB/code/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 modules/recordmanager/clean
 .PHONY : clean
 
 # The main clean target
@@ -116,84 +116,60 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 modules/recordmanager/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 modules/recordmanager/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/yyr/Work/MyDB/code/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named MyDB
+# Convenience name for target.
+modules/recordmanager/CMakeFiles/RecordManager.dir/rule:
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 modules/recordmanager/CMakeFiles/RecordManager.dir/rule
+.PHONY : modules/recordmanager/CMakeFiles/RecordManager.dir/rule
 
-# Build rule for target.
-MyDB: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyDB
-.PHONY : MyDB
+# Convenience name for target.
+RecordManager: modules/recordmanager/CMakeFiles/RecordManager.dir/rule
 
-# fast build rule for target.
-MyDB/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyDB.dir/build.make CMakeFiles/MyDB.dir/build
-.PHONY : MyDB/fast
-
-#=============================================================================
-# Target rules for targets named RecordManager
-
-# Build rule for target.
-RecordManager: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 RecordManager
 .PHONY : RecordManager
 
 # fast build rule for target.
 RecordManager/fast:
-	$(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/build
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/build
 .PHONY : RecordManager/fast
 
-#=============================================================================
-# Target rules for targets named Logger
+src/RecordManager.o: src/RecordManager.cpp.o
 
-# Build rule for target.
-Logger: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Logger
-.PHONY : Logger
-
-# fast build rule for target.
-Logger/fast:
-	$(MAKE) $(MAKESILENT) -f modules/logger/CMakeFiles/Logger.dir/build.make modules/logger/CMakeFiles/Logger.dir/build
-.PHONY : Logger/fast
-
-src/main.o: src/main.cpp.o
-
-.PHONY : src/main.o
+.PHONY : src/RecordManager.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyDB.dir/build.make CMakeFiles/MyDB.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+src/RecordManager.cpp.o:
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o
+.PHONY : src/RecordManager.cpp.o
 
-src/main.i: src/main.cpp.i
+src/RecordManager.i: src/RecordManager.cpp.i
 
-.PHONY : src/main.i
+.PHONY : src/RecordManager.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyDB.dir/build.make CMakeFiles/MyDB.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+src/RecordManager.cpp.i:
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.i
+.PHONY : src/RecordManager.cpp.i
 
-src/main.s: src/main.cpp.s
+src/RecordManager.s: src/RecordManager.cpp.s
 
-.PHONY : src/main.s
+.PHONY : src/RecordManager.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyDB.dir/build.make CMakeFiles/MyDB.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+src/RecordManager.cpp.s:
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.s
+.PHONY : src/RecordManager.cpp.s
 
 # Help Target
 help:
@@ -203,12 +179,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... Logger"
-	@echo "... MyDB"
 	@echo "... RecordManager"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... src/RecordManager.o"
+	@echo "... src/RecordManager.i"
+	@echo "... src/RecordManager.s"
 .PHONY : help
 
 
@@ -220,6 +194,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/yyr/Work/MyDB/code/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

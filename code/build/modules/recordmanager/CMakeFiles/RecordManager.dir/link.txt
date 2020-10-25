@@ -1,0 +1,2 @@
+/usr/bin/ar qc libRecordManager.a CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o
+/usr/bin/ranlib libRecordManager.a

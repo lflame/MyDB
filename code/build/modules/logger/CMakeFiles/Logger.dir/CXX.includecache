@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../modules/logger/include/logger.h
+
+/home/yyr/Work/MyDB/code/modules/logger/src/logger.cpp
+logger.h
+/home/yyr/Work/MyDB/code/modules/logger/src/logger.h
+cstdio
+/home/yyr/Work/MyDB/code/modules/logger/src/cstdio
+

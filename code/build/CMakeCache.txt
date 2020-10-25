@@ -184,10 +184,22 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Value Computed by CMake
+Logger_BINARY_DIR:STATIC=/home/yyr/Work/MyDB/code/build/modules/logger
+
+//Value Computed by CMake
+Logger_SOURCE_DIR:STATIC=/home/yyr/Work/MyDB/code/modules/logger
+
+//Value Computed by CMake
 MyDB_BINARY_DIR:STATIC=/home/yyr/Work/MyDB/code/build
 
 //Value Computed by CMake
 MyDB_SOURCE_DIR:STATIC=/home/yyr/Work/MyDB/code
+
+//Value Computed by CMake
+RecordManager_BINARY_DIR:STATIC=/home/yyr/Work/MyDB/code/build/modules/recordmanager
+
+//Value Computed by CMake
+RecordManager_SOURCE_DIR:STATIC=/home/yyr/Work/MyDB/code/modules/recordmanager
 
 
 ########################
@@ -280,7 +292,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

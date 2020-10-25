@@ -7,7 +7,7 @@ Logger::Logger(int inLevel) {
 
 template <typename ...Args>
 void Logger::log(Type type, const char* fmt, const Args&... args) {
-    printf("%d::", static_cast<int> type);
+    printf("%d::", static_cast<int>(type));
     printf(fmt, args...);
     // TODO
 }

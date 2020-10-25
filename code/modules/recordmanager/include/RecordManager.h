@@ -1,6 +1,9 @@
 #ifndef _RECORDMANAGER_H_
 #define _RECORDMANAGER_H_
 
+#include "BufPageManager.h"
+#include "FileManager.h"
+
 #define REC_SIZE_OFFSET 0
 #define REC_NUM_PER_PAGE_OFFSET 4
 #define REC_NUM_TOT_OFFSET 8

@@ -2,8 +2,6 @@
 #include "cstring"
 #include "cassert"
 #include "RecordManager.h"
-#include "BufPageManager.h"
-#include "FileManager.h"
 
 RecordManager::RecordManager() {
     bufPageManager = new BufPageManager(new FileManager);
@@ -40,7 +38,7 @@ int RecordManager::openFile(const char *name) {
     bufPageManager->fileManager->openFile(name, fileId);
     // 读入参数
     _readFileHeaderPage(FileHeaderPageParameterType::ALL);
-    
+
     return 0;
 }
 

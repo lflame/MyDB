@@ -1,3 +1,9 @@
 /home/yyr/Work/MyDB/code/build/CMakeFiles/rebuild_cache.dir
 /home/yyr/Work/MyDB/code/build/CMakeFiles/edit_cache.dir
 /home/yyr/Work/MyDB/code/build/CMakeFiles/MyDB.dir
+/home/yyr/Work/MyDB/code/build/modules/recordmanager/CMakeFiles/edit_cache.dir
+/home/yyr/Work/MyDB/code/build/modules/recordmanager/CMakeFiles/rebuild_cache.dir
+/home/yyr/Work/MyDB/code/build/modules/recordmanager/CMakeFiles/RecordManager.dir
+/home/yyr/Work/MyDB/code/build/modules/logger/CMakeFiles/edit_cache.dir
+/home/yyr/Work/MyDB/code/build/modules/logger/CMakeFiles/rebuild_cache.dir
+/home/yyr/Work/MyDB/code/build/modules/logger/CMakeFiles/Logger.dir

@@ -10,6 +10,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../CMakeLists.txt"
   "CMakeFiles/3.18.4/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.18.4/CMakeSystem.cmake"
+  "../modules/logger/CMakeLists.txt"
+  "../modules/recordmanager/CMakeLists.txt"
   "/usr/share/cmake-3.18/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.18/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
   "/usr/share/cmake-3.18/Modules/CMakeCommonLanguageInclude.cmake"
@@ -37,9 +39,13 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "modules/recordmanager/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "modules/logger/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/MyDB.dir/DependInfo.cmake"
+  "modules/recordmanager/CMakeFiles/RecordManager.dir/DependInfo.cmake"
+  "modules/logger/CMakeFiles/Logger.dir/DependInfo.cmake"
   )
