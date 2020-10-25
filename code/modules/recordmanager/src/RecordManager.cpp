@@ -39,13 +39,42 @@ void RecordManager::_readFileHeaderPage(FileHeaderPageParameterType type) {
     int index = -1;
     BufType buf = bufPageManager->getPage(fileId, 0, index);
     if (type == FileHeaderPageParameterType::ALL || type == FileHeaderPageParameterType::REC_SIZE) {
-        
+        _readIntFromBuffer(buf, REC_SIZE_OFFSET, recSize);
     }
-
+    if (type == FileHeaderPageParameterType::ALL || type == FileHeaderPageParameterType::REC_NUM_PER_PAGE) {
+        _readIntFromBuffer(buf, REC_NUM_PER_PAGE_OFFSET, recNumPerPage);
+    }
+    if (type == FileHeaderPageParameterType::ALL || type == FileHeaderPageParameterType::REC_NUM_TOT) {
+        _readIntFromBuffer(buf, REC_NUM_TOT_OFFSET, recNumTot);
+    }
+    if (type == FileHeaderPageParameterType::ALL || type == FileHeaderPageParameterType::PAGE_NUM) {
+        _readIntFromBuffer(buf, PAGE_NUM_OFFSET, pageNum);
+    }
+    if (type == FileHeaderPageParameterType::ALL || type == FileHeaderPageParameterType::USABLE_PAGE_HEADER) {
+        _readIntFromBuffer(buf, USABLE_PAGE_HEADER_OFFSET, usablePageHeader);
+    }
 }
 
 void RecordManager::_writeFileHeaderPage(FileHeaderPageParameterType type) {
     assert(fileId != -1);
+    int index = -1;
+    BufType buf = bufPageManager->getPage(fileId, 0, index);
+    if (type == FileHeaderPageParameterType::ALL || type == FileHeaderPageParameterType::REC_SIZE) {
+        _writeIntToBuffer(buf, REC_SIZE_OFFSET, recSize);
+    }
+    if (type == FileHeaderPageParameterType::ALL || type == FileHeaderPageParameterType::REC_NUM_PER_PAGE) {
+        _writeIntToBuffer(buf, REC_NUM_PER_PAGE_OFFSET, recNumPerPage);
+    }
+    if (type == FileHeaderPageParameterType::ALL || type == FileHeaderPageParameterType::REC_NUM_TOT) {
+        _writeIntToBuffer(buf, REC_NUM_TOT_OFFSET, recNumTot);
+    }
+    if (type == FileHeaderPageParameterType::ALL || type == FileHeaderPageParameterType::PAGE_NUM) {
+        _writeIntToBuffer(buf, PAGE_NUM_OFFSET, pageNum);
+    }
+    if (type == FileHeaderPageParameterType::ALL || type == FileHeaderPageParameterType::USABLE_PAGE_HEADER) {
+        _writeIntToBuffer(buf, USABLE_PAGE_HEADER_OFFSET, usablePageHeader);
+    }
+    bufPageManager->markDirty(index);
 }
 
 void RecordManager::_readIntFromBuffer(BufType buf, int offset, int &value) {

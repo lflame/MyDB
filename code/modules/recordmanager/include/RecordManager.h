@@ -1,6 +1,12 @@
 #ifndef _RECORDMANAGER_H_
 #define _RECORDMANAGER_H_
 
+#define REC_SIZE_OFFSET 0
+#define REC_NUM_PER_PAGE_OFFSET 4
+#define REC_NUM_TOT_OFFSET 8
+#define PAGE_NUM_OFFSET 12
+#define USABLE_PAGE_HEADER_OFFSET 16
+
 class BufPageManager;
 
 struct RID {
