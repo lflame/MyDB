@@ -14,8 +14,21 @@ RecordManager::~RecordManager() {
 }
 
 void RecordManager::createFile(const char *name, int inRecSize) {
+    assert(fileId == -1);
     bufPageManager->fileManager->createFile(name);
-    // TODO
+    bufPageManager->fileManager->openFile(name, fileId);
+    
+    // 设定初始参数
+    // NOTE: 若数据页头部存储参数类型改变，此处计算 recNumPerPage 时也需要相应改变
+    recSize = inRecSize;
+    recNumPerPage = PAGE_SIZE/recSize;
+    while (8 + (recNumPerPage+7)/8*8 + recSize*recNumPerPage > PAGE_SIZE) recNumPerPage--;
+    pageNum = 1;
+    usablePageHeader = -1;
+
+    _writeFileHeaderPage(FileHeaderPageParameterType::ALL);
+    bufPageManager->fileManager->closeFile(fileId);
+    fileId = -1;
 }
 
 void RecordManager::deleteFile(const char *name) {
@@ -24,7 +37,11 @@ void RecordManager::deleteFile(const char *name) {
 
 int RecordManager::openFile(const char *name) {
     assert(fileId == -1);
-    return bufPageManager->fileManager->openFile(name, fileId);
+    bufPageManager->fileManager->openFile(name, fileId);
+    // 读入参数
+    _readFileHeaderPage(FileHeaderPageParameterType::ALL);
+    
+    return 0;
 }
 
 int RecordManager::closeFile() {

@@ -55,6 +55,10 @@ class RecordManager {
 
     ~RecordManager();
 
+    /*
+     * 创建数据库文件，并且设定头部初始值
+     * **需要保证调用时还未打开文件**
+     */
     void createFile(const char *name, int inRecSize);
 
     void deleteFile(const char *name);
@@ -72,7 +76,7 @@ class RecordManager {
 
     /*
      * 插入一个记录
-     */
+     */ 
     void insertRecord();
 
   private:
