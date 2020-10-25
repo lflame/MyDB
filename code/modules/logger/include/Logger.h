@@ -24,14 +24,9 @@ class Logger {
 
     void printTag(FILE* file, Type type);
 
-    // template <typename ...Args>
-    // void fatal(const char* fmt, const Args&... args);
-    // template <typename ...Args>
-    // void error(const char* fmt, const Args&... args);
-    // template <typename ...Args>
-    // void warning(const char* fmt, const Args&... args);
-    // template <typename ...Args>
-    // void info(const char* fmt, const Args&... args);
+    void startColoredText(Type type);
+    void endColoredText();
+
     void fatal(const char* fmt, ...);
     void error(const char* fmt, ...);
     void warning(const char* fmt, ...);

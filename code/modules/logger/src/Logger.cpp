@@ -3,38 +3,20 @@
 #include "cstring"
 
 #define LOGGER_LOG(type, file, format) \
+    startColoredText(type); \
     printTag(file, type); \
     va_list argptr; \
     va_start(argptr, format); \
     vfprintf(file, format, argptr); \
     va_end(argptr); \
-    printf("\n");
+    fprintf(file, "\n"); \
+    endColoredText();
 
 Logger Logger::logger;
 
 Logger::Logger(int inLevel) {
     level = inLevel;
 }
-
-// template <typename ...Args>
-// void Logger::fatal(const char* fmt, const Args&... args) {
-//     log(Type::FATAL, fmt, args...);
-// }
-
-// template <typename ...Args>
-// void Logger::error(const char* fmt, const Args&... args) {
-//     log(Type::ERROR, fmt, args...);
-// }
-
-// template <typename ...Args>
-// void Logger::warning(const char* fmt, const Args&... args) {
-//     log(Type::WARNING, fmt, args...);
-// }
-
-// template <typename ...Args>
-// void Logger::info(const char* fmt, const Args&... args) {
-//     log(Type::INFO, fmt, args...);
-// }
 
 const char* Logger::getTypeString(Type type) {
     switch (type)
@@ -52,12 +34,34 @@ const char* Logger::getTypeString(Type type) {
     }
 }
 
+void Logger::startColoredText(Type type) {
+    switch (type)
+    {
+    case Type::FATAL:
+    case Type::ERROR:
+        printf("\033[1;31m");
+        break;
+    case Type::WARNING:
+        printf("\033[1;33m");
+        break;
+    case Type::INFO:
+        printf("\033[1;32m");
+        break;
+    case Type::DEBUG:
+        printf("\033[1;34m");
+        break;
+    }
+}
+
+void Logger::endColoredText() {
+    printf("\033[0m");
+}
+
 void Logger::printTag(FILE* file, Type type) {
     time_t now = time(0);
     char* dt = ctime(&now);
     int len = strlen(dt);
     dt[len-1] = '\0';  // 去掉换行符
-
     printf("%s %s:: ", dt, getTypeString(type));
 }
 

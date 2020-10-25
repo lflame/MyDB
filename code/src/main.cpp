@@ -2,8 +2,19 @@
 #include "cstring"
 #include "Logger.h"
 
+void testLogger() {
+    printf("testLogger start.\n");
+    Logger::logger.debug("%s %d %.2f", "test", 3, 3.142);
+    Logger::logger.info("%s %d %.2f", "test", 3, 3.142);
+    Logger::logger.warning("%s %d %.2f", "test", 3, 3.142);
+    Logger::logger.error("%s %d %.2f", "test", 3, 3.142);
+    Logger::logger.fatal("%s %d %.2f", "test", 3, 3.142);
+    printf("testLogger end.\n");
+}
+
 int main()
 {
-    Logger::logger.warning("Test: %d %.2f", 3, 3.142);
+    testLogger();
+    
     return 0;
 }
