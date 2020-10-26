@@ -22,6 +22,7 @@ void RecordManager::createFile(const char *name, int inRecSize) {
     recSize = inRecSize;
     recNumPerPage = PAGE_SIZE/recSize;
     while (8 + (recNumPerPage+7)/8*8 + recSize*recNumPerPage > PAGE_SIZE) recNumPerPage--;
+    recNumTot = 0;
     pageNum = 1;
     usablePageHeader = -1;
 
