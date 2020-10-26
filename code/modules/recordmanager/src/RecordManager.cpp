@@ -88,7 +88,7 @@ void RecordManager::getUsableRID(RID &rid) {
     rid.pageId = usablePageHeader;
     char tmp = 0;
     for (int i = 0; i < dataPageMapBitsNum/8; ++i) {
-        _readDataFromPage(pageNum-1, USABLE_BITMAP_OFFSET+i, &tmp, 1);
+        _readDataFromPage(rid.pageId, USABLE_BITMAP_OFFSET+i, &tmp, 1);
         int bit = (unsigned)lowbit(tmp);
         if (bit != 0) {
             int index = powerToIndex[bit];

@@ -53,10 +53,22 @@ void testRM() {
     assert(rid.slotId == 1);
 
     // 测试读取
-    char record2[testRecSize];
-    rm.getRecord(record2, RID(1, 1));
-    Logger::logger.debug("record: %s", record2);
-    assert(strcmp(record, record2)==0);
+    char tmpRecord[testRecSize];
+    rm.getRecord(tmpRecord, RID(1, 1));
+    Logger::logger.debug("record: %s", tmpRecord);
+    assert(strcmp(record, tmpRecord)==0);
+
+    // 测试删除
+    char record2[testRecSize] = "987654321";
+    rid = RID(1, 3);
+    rm.deleteRecord(rid);
+    rid = RID(0, 0);
+    rm.insertRecord(record2, rid);
+    Logger::logger.debug("rid.pageId: %d, rid.slotId: %d", rid.pageId, rid.slotId);
+    assert(rid == RID(1, 3));
+    rm.getRecord(tmpRecord, rid);
+    Logger::logger.debug("record: %s", tmpRecord);
+    assert(strcmp(record2, tmpRecord)==0);
 
     Logger::logger.info("End testRM.");
 }
