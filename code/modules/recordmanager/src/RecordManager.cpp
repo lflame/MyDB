@@ -208,9 +208,9 @@ void RecordManager::_writeDataPagePointer(int pageId, bool isPrev, int pointer) 
         _writeFileHeaderPage(FileHeaderPageParameterType::USABLE_PAGE_HEADER);
     } else {
         if (isPrev) {
-            _writeIntToPage(FILE_HEADER_PAGE_ID, PREV_USABLE_PAGE_OFFSET, pointer);
+            _writeIntToPage(pageId, PREV_USABLE_PAGE_OFFSET, pointer);
         } else {
-            _writeIntToPage(FILE_HEADER_PAGE_ID, NEXT_USABLE_PAGE_OFFSET, pointer);
+            _writeIntToPage(pageId, NEXT_USABLE_PAGE_OFFSET, pointer);
         }
     }
 }

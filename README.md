@@ -20,7 +20,7 @@ TODO: 存储到记录文件中。
 ### 文件存储
 
 * 文件的第一页存储: 每个记录的字节数 recSize、每一页存储的记录最大个数 recNumPerPage、总记录个数 recNumTot、总页数 pageNum，以及非满页链表表头对应的页数 usablePageHeader(均为 int 型，页数从 0 开始计数)，另外链表指针值为 -1 时表示空指针。
-* 每个数据页存储： 开头存储两个 int，分别为 prevUsablePage 和 nextUsablePage，接着使用 recNumPerPage 位表示每个记录槽是否存放记录，接下来 8 位对齐之后共 recNumPerPage 个记录槽，每个记录槽消耗 recSize 个字节。注意需要满足 `8 + (recNumPerPage+7)/8*8 + recSize*recNumPerPage <= PAGE_SIZE`
+* 每个数据页存储： 开头存储三个 int，分别为 prevUsablePage 和 nextUsablePage，以及 usableSlotNum 表示还剩余多少个空余槽, 接着使用 recNumPerPage 位表示每个记录槽是否存放记录(1 表空闲, 0 表占用)，接下来 8 位对齐之后共 recNumPerPage 个记录槽，每个记录槽消耗 recSize 个字节。注意需要满足 `12 + (recNumPerPage+7)/8*8 + recSize*recNumPerPage <= PAGE_SIZE`
 
 
 为提高鲁棒性，在存储 int 时统一使用网络字节序。

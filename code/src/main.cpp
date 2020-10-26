@@ -27,7 +27,7 @@ void testRM() {
         // 测试文件已存在，需要先删除
         rm.deleteFile(filename);
     }
-    int testRecSize = 10;
+    const int testRecSize = 10;
     rm.createFile(filename, testRecSize);
     rm.recSize=rm.recNumPerPage=rm.recNumTot=rm.pageNum=rm.usablePageHeader=0;
     rm.openFile(filename);
@@ -40,14 +40,23 @@ void testRM() {
     assert(rm.usablePageHeader == -1);
     assert(12 + (rm.recNumPerPage+7)/8*8 + rm.recSize*rm.recNumPerPage <= PAGE_SIZE);
 
-    char record[10] = "123456789";
-    char record2[10];
+    // 测试插入超过一页
+    char record[testRecSize] = "123456789";
     RID rid;
     for (int i = 1; i <= rm.recNumPerPage + 2; ++i) {
         rm.insertRecord(record, rid);
         if (i >= rm.recNumPerPage - 2)
             Logger::logger.debug("rid.pageId: %d, rid.slotId: %d", rid.pageId, rid.slotId);
     }
+    assert(rm.pageNum == 3);
+    assert(rid.pageId == 2);
+    assert(rid.slotId == 1);
+
+    // 测试读取
+    char record2[testRecSize];
+    rm.getRecord(record2, RID(1, 1));
+    Logger::logger.debug("record: %s", record2);
+    assert(strcmp(record, record2)==0);
 
     Logger::logger.info("End testRM.");
 }
