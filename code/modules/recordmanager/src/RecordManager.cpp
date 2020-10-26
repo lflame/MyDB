@@ -134,6 +134,11 @@ void RecordManager::insertRecord(char *recordData, RID &rid) {
     takeUpRID(rid);
 }
 
+void RecordManager::updateRecord(char *recordData, RID rid) {
+    assert(fileId != -1);
+    _writeDataToPage(rid.pageId, SLOT_OFFSET + rid.slotId*recSize, recordData, recSize);
+}
+
 void RecordManager::getRecord(char *recordData, RID rid) {
     assert(fileId != -1);
     _readDataFromPage(rid.pageId, SLOT_OFFSET + rid.slotId*recSize, recordData, recSize);

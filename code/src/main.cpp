@@ -65,5 +65,6 @@ int main()
 {
     // testLogger();
     testRM();
+    Logger::logger.info("测试通过");
     return 0;
 }

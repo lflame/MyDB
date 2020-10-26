@@ -120,9 +120,16 @@ class RecordManager {
     /*
      * 获取一个记录
      * @参数 recordData：返回的记录存储到的位置
-     * @参数 rid：记录存放的位置
+     * @参数 rid：存放记录的位置
      */
     void getRecord(char *recordData, RID rid);
+
+    /*
+     * 更新一个记录
+     * @参数 recordData：要更新的记录数据
+     * @参数 rid：存放记录的位置
+     */
+    void updateRecord(char *recordData, RID rid);
 
   private:
     int fileId = -1;  // 保证只打开一个文件
