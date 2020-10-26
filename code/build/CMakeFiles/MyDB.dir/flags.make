@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/yyr/Work/MyDB/code/modules/recordmanager/include -I/home/yyr/Work/MyDB/code/modules/recordmanager/../filesystem/bufmanager -I/home/yyr/Work/MyDB/code/modules/recordmanager/../filesystem/fileio -I/home/yyr/Work/MyDB/code/modules/recordmanager/../filesystem/utils -I/home/yyr/Work/MyDB/code/modules/logger/include
+CXX_INCLUDES = -I/home/yyr/Work/MyDB/code/modules/recordmanager/include -I/home/yyr/Work/MyDB/code/modules/logger/include -I/home/yyr/Work/MyDB/code/modules/filesystem/include/bufmanager -I/home/yyr/Work/MyDB/code/modules/filesystem/include/fileio -I/home/yyr/Work/MyDB/code/modules/filesystem/include/utils
 
 CXX_FLAGS = 
 

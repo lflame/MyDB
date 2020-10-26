@@ -168,6 +168,19 @@ Logger/fast:
 	$(MAKE) $(MAKESILENT) -f modules/logger/CMakeFiles/Logger.dir/build.make modules/logger/CMakeFiles/Logger.dir/build
 .PHONY : Logger/fast
 
+#=============================================================================
+# Target rules for targets named FileSystem
+
+# Build rule for target.
+FileSystem: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 FileSystem
+.PHONY : FileSystem
+
+# fast build rule for target.
+FileSystem/fast:
+	$(MAKE) $(MAKESILENT) -f modules/filesystem/CMakeFiles/FileSystem.dir/build.make modules/filesystem/CMakeFiles/FileSystem.dir/build
+.PHONY : FileSystem/fast
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -203,6 +216,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... FileSystem"
 	@echo "... Logger"
 	@echo "... MyDB"
 	@echo "... RecordManager"

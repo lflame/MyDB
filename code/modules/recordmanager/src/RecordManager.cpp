@@ -93,6 +93,29 @@ void RecordManager::_writeFileHeaderPage(FileHeaderPageParameterType type) {
     bufPageManager->markDirty(index);
 }
 
+void RecordManager::_readDataPagePointer(int pageId, bool isPrev, int &pointer) {
+    assert(fileId != -1);
+    int index = -1;
+    BufType buf = bufPageManager->getPage(fileId, 0, index);
+    if (isPrev) {
+        _readIntFromBuffer(buf, PREV_USABLE_PAGE_OFFSET, pointer);
+    } else {
+        _readIntFromBuffer(buf, NEXT_USABLE_PAGE_OFFSET, pointer);
+    }
+}
+
+void RecordManager::_writeDataPagePointer(int pageId, bool isPrev, int pointer) {
+    assert(fileId != -1);
+    int index = -1;
+    BufType buf = bufPageManager->getPage(fileId, 0, index);
+    if (isPrev) {
+        _writeIntToBuffer(buf, PREV_USABLE_PAGE_OFFSET, pointer);
+    } else {
+        _writeIntToBuffer(buf, NEXT_USABLE_PAGE_OFFSET, pointer);
+    }
+    bufPageManager->markDirty(index);
+}
+
 void RecordManager::_readIntFromBuffer(BufType buf, int offset, int &value) {
     char *tmpBuf = (char*)buf;
     memcpy(&value, tmpBuf+offset, 4);

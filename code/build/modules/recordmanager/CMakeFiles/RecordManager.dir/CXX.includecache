@@ -6,29 +6,29 @@
 
 #IncludeRegexTransform: 
 
-../modules/filesystem/bufmanager/BufPageManager.h
+../modules/filesystem/include/bufmanager/BufPageManager.h
 ../utils/MyHashMap.h
-../modules/filesystem/utils/MyHashMap.h
+../modules/filesystem/include/utils/MyHashMap.h
 ../utils/MyBitMap.h
-../modules/filesystem/utils/MyBitMap.h
+../modules/filesystem/include/utils/MyBitMap.h
 FindReplace.h
-../modules/filesystem/bufmanager/FindReplace.h
+../modules/filesystem/include/bufmanager/FindReplace.h
 ../utils/pagedef.h
-../modules/filesystem/utils/pagedef.h
+../modules/filesystem/include/utils/pagedef.h
 ../fileio/FileManager.h
-../modules/filesystem/fileio/FileManager.h
+../modules/filesystem/include/fileio/FileManager.h
 ../utils/MyLinkList.h
-../modules/filesystem/utils/MyLinkList.h
+../modules/filesystem/include/utils/MyLinkList.h
 
-../modules/filesystem/bufmanager/FindReplace.h
+../modules/filesystem/include/bufmanager/FindReplace.h
 ../utils/MyLinkList.h
-../modules/filesystem/utils/MyLinkList.h
+../modules/filesystem/include/utils/MyLinkList.h
 ../utils/MyHashMap.h
-../modules/filesystem/utils/MyHashMap.h
+../modules/filesystem/include/utils/MyHashMap.h
 ../utils/pagedef.h
-../modules/filesystem/utils/pagedef.h
+../modules/filesystem/include/utils/pagedef.h
 
-../modules/filesystem/fileio/FileManager.h
+../modules/filesystem/include/fileio/FileManager.h
 string
 -
 stdio.h
@@ -44,19 +44,19 @@ unistd.h
 fcntl.h
 -
 
-../modules/filesystem/utils/MyBitMap.h
+../modules/filesystem/include/utils/MyBitMap.h
 iostream
 -
 
-../modules/filesystem/utils/MyHashMap.h
+../modules/filesystem/include/utils/MyHashMap.h
 pagedef.h
-../modules/filesystem/utils/pagedef.h
+../modules/filesystem/include/utils/pagedef.h
 MyLinkList.h
-../modules/filesystem/utils/MyLinkList.h
+../modules/filesystem/include/utils/MyLinkList.h
 
-../modules/filesystem/utils/MyLinkList.h
+../modules/filesystem/include/utils/MyLinkList.h
 
-../modules/filesystem/utils/pagedef.h
+../modules/filesystem/include/utils/pagedef.h
 unistd.h
 -
 errno.h

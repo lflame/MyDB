@@ -100,6 +100,7 @@ MyDB: CMakeFiles/MyDB.dir/src/main.cpp.o
 MyDB: CMakeFiles/MyDB.dir/build.make
 MyDB: modules/recordmanager/libRecordManager.a
 MyDB: modules/logger/libLogger.a
+MyDB: modules/filesystem/libFileSystem.a
 MyDB: CMakeFiles/MyDB.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable MyDB"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MyDB.dir/link.txt --verbose=$(VERBOSE)

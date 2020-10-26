@@ -4,6 +4,7 @@ project(MyDB LANGUAGES CXX)
 add_executable(MyDB src/main.cpp)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/modules/recordmanager)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/modules/logger)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/modules/filesystem)
 target_link_libraries(MyDB PUBLIC RecordManager)
 target_link_libraries(MyDB PUBLIC Logger)
 

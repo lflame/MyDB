@@ -11,15 +11,16 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../modules/recordmanager/include"
-  "../modules/recordmanager/../filesystem/bufmanager"
-  "../modules/recordmanager/../filesystem/fileio"
-  "../modules/recordmanager/../filesystem/utils"
   "../modules/logger/include"
+  "../modules/filesystem/include/bufmanager"
+  "../modules/filesystem/include/fileio"
+  "../modules/filesystem/include/utils"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/yyr/Work/MyDB/code/build/modules/logger/CMakeFiles/Logger.dir/DependInfo.cmake"
+  "/home/yyr/Work/MyDB/code/build/modules/filesystem/CMakeFiles/FileSystem.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.
