@@ -1,6 +1,6 @@
 # MyDB
 
-《数据库系统概论》课程项目，实现一个单用户数据库，分为了辅助模块(Logger 模块)和四个主模块——记录管理模块、索引管理模块、系统管理模块以及查询解析模块。
+《数据库系统概论》课程项目，实现一个单用户数据库，分为了辅助模块(Logger 模块、Tests 模块)和四个主模块——记录管理模块、索引管理模块、系统管理模块以及查询解析模块。
 
 ## 框架与结构设计
 
@@ -18,6 +18,10 @@ code/
   build.sh
   run.sh
   modules/
+	tests/
+	  CmakeLists.txt
+	  include/
+	  src/
     filesystem/
 	  CMakeLists.txt
 	  include/
@@ -35,6 +39,10 @@ code/
 ```
 
 使用 `bash run.sh` 将会首先使用 cmake 进行构建（注意暂时限定了版本为 3.18.4 及其以上），并且运行 main.cpp 进行测试。
+
+## Tests 模块
+
+用于进行单元测试，直接调用 `testAll()` 即可进行所有测试。
 
 ## Logger 模块
 
