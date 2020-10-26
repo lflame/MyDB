@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/yyr/Work/MyDB/code/modules/logger/include
 
-CXX_FLAGS = 
+CXX_FLAGS = -g
 

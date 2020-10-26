@@ -85,6 +85,8 @@ FileManager.h
 /home/yyr/Work/MyDB/code/modules/recordmanager/src/RecordManager.cpp
 RecordManager.h
 /home/yyr/Work/MyDB/code/modules/recordmanager/src/RecordManager.h
+bitset
+/home/yyr/Work/MyDB/code/modules/recordmanager/src/bitset
 netinet/in.h
 /home/yyr/Work/MyDB/code/modules/recordmanager/src/netinet/in.h
 cstring

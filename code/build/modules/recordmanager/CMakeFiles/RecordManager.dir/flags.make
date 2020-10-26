@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/yyr/Work/MyDB/code/modules/recordmanager/include -I/home/yyr/Work/MyDB/code/modules/logger/include -I/home/yyr/Work/MyDB/code/modules/filesystem/include/bufmanager -I/home/yyr/Work/MyDB/code/modules/filesystem/include/fileio -I/home/yyr/Work/MyDB/code/modules/filesystem/include/utils
 
-CXX_FLAGS = 
+CXX_FLAGS = -g
 

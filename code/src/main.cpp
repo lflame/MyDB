@@ -27,16 +27,27 @@ void testRM() {
         // 测试文件已存在，需要先删除
         rm.deleteFile(filename);
     }
-    rm.createFile(filename, 10);
+    int testRecSize = 10;
+    rm.createFile(filename, testRecSize);
     rm.recSize=rm.recNumPerPage=rm.recNumTot=rm.pageNum=rm.usablePageHeader=0;
     rm.openFile(filename);
     Logger::logger.debug("recSize: %d, recNumPerPage: %d, recNumTot: %d, pageNum: %d, usablePageHeader: %d",
         rm.recSize, rm.recNumPerPage, rm.recNumTot, rm.pageNum, rm.usablePageHeader);
-    assert(rm.recSize == 10);
+    Logger::logger.debug("dataPageMapBitsNum: %d", rm.dataPageMapBitsNum);
+    assert(rm.recSize == testRecSize);
     assert(rm.recNumTot == 0);
     assert(rm.pageNum == 1);
     assert(rm.usablePageHeader == -1);
-    assert(8 + (rm.recNumPerPage+7)/8*8 + rm.recSize*rm.recNumPerPage <= PAGE_SIZE);
+    assert(12 + (rm.recNumPerPage+7)/8*8 + rm.recSize*rm.recNumPerPage <= PAGE_SIZE);
+
+    char record[10] = "123456789";
+    char record2[10];
+    RID rid;
+    for (int i = 1; i <= rm.recNumPerPage + 2; ++i) {
+        rm.insertRecord(record, rid);
+        if (i >= rm.recNumPerPage - 2)
+            Logger::logger.debug("rid.pageId: %d, rid.slotId: %d", rid.pageId, rid.slotId);
+    }
 
     Logger::logger.info("End testRM.");
 }
