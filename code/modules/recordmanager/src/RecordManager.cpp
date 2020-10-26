@@ -127,6 +127,35 @@ void RecordManager::takeUpRID(RID rid) {
     }
 }
 
+void RecordManager::freeRID(RID rid) {
+    assert(fileId != -1);
+    int pageId = rid.pageId, slotId = rid.slotId;
+
+    // 更改占用位
+    char tmp;
+    _readDataFromPage(pageId, USABLE_BITMAP_OFFSET + slotId/8, &tmp, 1);
+    int slotOffset = slotId - slotId/8*8;
+    assert((tmp & (1<<slotOffset)) == 0);
+    tmp ^= (1<<slotOffset);
+    _writeDataToPage(pageId, USABLE_BITMAP_OFFSET + slotId/8, &tmp, 1);
+
+    // 更改 usableSlotNum
+    int usableSlotNum;
+    _readIntFromPage(pageId, USABLE_SLOT_NUM_OFFSET, usableSlotNum);
+    usableSlotNum++;
+    _writeIntToPage(pageId, USABLE_SLOT_NUM_OFFSET, usableSlotNum);
+
+    // 更改链表
+    if (usableSlotNum == 1) {
+        int oldPageHeader = usablePageHeader;
+        usablePageHeader = pageId;
+        _writeDataPagePointer(oldPageHeader, true, usablePageHeader);
+        _writeDataPagePointer(usablePageHeader, false, oldPageHeader);
+        _writeDataPagePointer(usablePageHeader, true, 0);
+        _writeFileHeaderPage(FileHeaderPageParameterType::USABLE_PAGE_HEADER);
+    }
+}
+
 void RecordManager::insertRecord(char *recordData, RID &rid) {
     assert(fileId != -1);
     getUsableRID(rid);
@@ -142,6 +171,11 @@ void RecordManager::updateRecord(char *recordData, RID rid) {
 void RecordManager::getRecord(char *recordData, RID rid) {
     assert(fileId != -1);
     _readDataFromPage(rid.pageId, SLOT_OFFSET + rid.slotId*recSize, recordData, recSize);
+}
+
+void RecordManager::deleteRecord(RID rid) {
+    assert(fileId != -1);
+    freeRID(rid);
 }
 
 void RecordManager::_readFileHeaderPage(FileHeaderPageParameterType type) {

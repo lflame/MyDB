@@ -131,6 +131,12 @@ class RecordManager {
      */
     void updateRecord(char *recordData, RID rid);
 
+    /*
+     * 删除一个记录
+     * @参数 rid：存放记录的位置
+     */
+    void deleteRecord(RID rid);
+
   private:
     int fileId = -1;  // 保证只打开一个文件
 
