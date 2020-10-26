@@ -10,5 +10,6 @@ modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o
  ../modules/filesystem/include/utils/MyLinkList.h
  ../modules/filesystem/include/utils/pagedef.h
  ../modules/logger/include/Logger.h
+ ../modules/recordmanager/include/AttrType.h
  ../modules/recordmanager/include/RecordManager.h
  /home/yyr/Work/MyDB/code/modules/recordmanager/src/RecordManager.cpp

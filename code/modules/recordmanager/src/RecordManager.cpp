@@ -156,6 +156,15 @@ void RecordManager::freeRID(RID rid) {
     }
 }
 
+bool RecordManager::isUsedRID(RID rid) {
+    assert(fileId != -1);
+    int pageId = rid.pageId, slotId = rid.slotId;
+    char tmp;
+    _readDataFromPage(pageId, USABLE_BITMAP_OFFSET + slotId/8, &tmp, 1);
+    int slotOffset = slotId - slotId/8*8;
+    return (tmp & (1<<slotOffset)) == 0;
+}
+
 void RecordManager::insertRecord(char *recordData, RID &rid) {
     assert(fileId != -1);
     getUsableRID(rid);
@@ -165,11 +174,13 @@ void RecordManager::insertRecord(char *recordData, RID &rid) {
 
 void RecordManager::updateRecord(char *recordData, RID rid) {
     assert(fileId != -1);
+    assert(isUsedRID(rid));
     _writeDataToPage(rid.pageId, SLOT_OFFSET + rid.slotId*recSize, recordData, recSize);
 }
 
 void RecordManager::getRecord(char *recordData, RID rid) {
     assert(fileId != -1);
+    assert(isUsedRID(rid));
     _readDataFromPage(rid.pageId, SLOT_OFFSET + rid.slotId*recSize, recordData, recSize);
 }
 

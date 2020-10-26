@@ -3,6 +3,7 @@
 
 #include "BufPageManager.h"
 #include "FileManager.h"
+#include "AttrType.h"
 
 #define FILE_HEADER_PAGE_ID 0
 
@@ -108,6 +109,11 @@ class RecordManager {
      * 标记释放一个记录槽
      */
     void freeRID(RID rid);
+
+    /*
+     * 返回某个记录槽的 bitmap 对应位
+     */
+    bool isUsedRID(RID rid);
 
 
     /*

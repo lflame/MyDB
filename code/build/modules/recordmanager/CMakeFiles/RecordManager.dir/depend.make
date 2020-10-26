@@ -9,6 +9,7 @@ modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../m
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/filesystem/include/utils/MyLinkList.h
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/filesystem/include/utils/pagedef.h
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/logger/include/Logger.h
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/recordmanager/include/AttrType.h
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/recordmanager/include/RecordManager.h
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/recordmanager/src/RecordManager.cpp
 
