@@ -10,17 +10,19 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../modules/recordmanager/include"
   "../modules/logger/include"
   "../modules/filesystem/include/bufmanager"
   "../modules/filesystem/include/fileio"
   "../modules/filesystem/include/utils"
+  "../modules/recordmanager/include"
+  "../modules/tests/include"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/yyr/Work/MyDB/code/build/modules/recordmanager/CMakeFiles/RecordManager.dir/DependInfo.cmake"
+  "/home/yyr/Work/MyDB/code/build/modules/tests/CMakeFiles/Tests.dir/DependInfo.cmake"
   "/home/yyr/Work/MyDB/code/build/modules/logger/CMakeFiles/Logger.dir/DependInfo.cmake"
+  "/home/yyr/Work/MyDB/code/build/modules/recordmanager/CMakeFiles/RecordManager.dir/DependInfo.cmake"
   "/home/yyr/Work/MyDB/code/build/modules/filesystem/CMakeFiles/FileSystem.dir/DependInfo.cmake"
   )
 

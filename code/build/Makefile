@@ -181,6 +181,19 @@ FileSystem/fast:
 	$(MAKE) $(MAKESILENT) -f modules/filesystem/CMakeFiles/FileSystem.dir/build.make modules/filesystem/CMakeFiles/FileSystem.dir/build
 .PHONY : FileSystem/fast
 
+#=============================================================================
+# Target rules for targets named Tests
+
+# Build rule for target.
+Tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Tests
+.PHONY : Tests
+
+# fast build rule for target.
+Tests/fast:
+	$(MAKE) $(MAKESILENT) -f modules/tests/CMakeFiles/Tests.dir/build.make modules/tests/CMakeFiles/Tests.dir/build
+.PHONY : Tests/fast
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -220,6 +233,7 @@ help:
 	@echo "... Logger"
 	@echo "... MyDB"
 	@echo "... RecordManager"
+	@echo "... Tests"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

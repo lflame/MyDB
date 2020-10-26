@@ -10,3 +10,6 @@
 /home/yyr/Work/MyDB/code/build/modules/filesystem/CMakeFiles/edit_cache.dir
 /home/yyr/Work/MyDB/code/build/modules/filesystem/CMakeFiles/rebuild_cache.dir
 /home/yyr/Work/MyDB/code/build/modules/filesystem/CMakeFiles/FileSystem.dir
+/home/yyr/Work/MyDB/code/build/modules/tests/CMakeFiles/rebuild_cache.dir
+/home/yyr/Work/MyDB/code/build/modules/tests/CMakeFiles/edit_cache.dir
+/home/yyr/Work/MyDB/code/build/modules/tests/CMakeFiles/Tests.dir

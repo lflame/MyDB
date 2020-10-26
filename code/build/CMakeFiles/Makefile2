@@ -76,6 +76,7 @@ all: CMakeFiles/MyDB.dir/all
 all: modules/recordmanager/all
 all: modules/logger/all
 all: modules/filesystem/all
+all: modules/tests/all
 
 .PHONY : all
 
@@ -83,6 +84,7 @@ all: modules/filesystem/all
 preinstall: modules/recordmanager/preinstall
 preinstall: modules/logger/preinstall
 preinstall: modules/filesystem/preinstall
+preinstall: modules/tests/preinstall
 
 .PHONY : preinstall
 
@@ -91,6 +93,7 @@ clean: CMakeFiles/MyDB.dir/clean
 clean: modules/recordmanager/clean
 clean: modules/logger/clean
 clean: modules/filesystem/clean
+clean: modules/tests/clean
 
 .PHONY : clean
 
@@ -149,12 +152,31 @@ modules/recordmanager/clean: modules/recordmanager/CMakeFiles/RecordManager.dir/
 .PHONY : modules/recordmanager/clean
 
 #=============================================================================
+# Directory level rules for directory modules/tests
+
+# Recursive "all" directory target.
+modules/tests/all: modules/tests/CMakeFiles/Tests.dir/all
+
+.PHONY : modules/tests/all
+
+# Recursive "preinstall" directory target.
+modules/tests/preinstall:
+
+.PHONY : modules/tests/preinstall
+
+# Recursive "clean" directory target.
+modules/tests/clean: modules/tests/CMakeFiles/Tests.dir/clean
+
+.PHONY : modules/tests/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/MyDB.dir
 
 # All Build rule for target.
 CMakeFiles/MyDB.dir/all: modules/recordmanager/CMakeFiles/RecordManager.dir/all
 CMakeFiles/MyDB.dir/all: modules/logger/CMakeFiles/Logger.dir/all
 CMakeFiles/MyDB.dir/all: modules/filesystem/CMakeFiles/FileSystem.dir/all
+CMakeFiles/MyDB.dir/all: modules/tests/CMakeFiles/Tests.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyDB.dir/build.make CMakeFiles/MyDB.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyDB.dir/build.make CMakeFiles/MyDB.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=5,6 "Built target MyDB"
@@ -162,7 +184,7 @@ CMakeFiles/MyDB.dir/all: modules/filesystem/CMakeFiles/FileSystem.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/MyDB.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyr/Work/MyDB/code/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyr/Work/MyDB/code/build/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/MyDB.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyr/Work/MyDB/code/build/CMakeFiles 0
 .PHONY : CMakeFiles/MyDB.dir/rule
@@ -258,6 +280,35 @@ FileSystem: modules/filesystem/CMakeFiles/FileSystem.dir/rule
 modules/filesystem/CMakeFiles/FileSystem.dir/clean:
 	$(MAKE) $(MAKESILENT) -f modules/filesystem/CMakeFiles/FileSystem.dir/build.make modules/filesystem/CMakeFiles/FileSystem.dir/clean
 .PHONY : modules/filesystem/CMakeFiles/FileSystem.dir/clean
+
+#=============================================================================
+# Target rules for target modules/tests/CMakeFiles/Tests.dir
+
+# All Build rule for target.
+modules/tests/CMakeFiles/Tests.dir/all: modules/recordmanager/CMakeFiles/RecordManager.dir/all
+modules/tests/CMakeFiles/Tests.dir/all: modules/logger/CMakeFiles/Logger.dir/all
+modules/tests/CMakeFiles/Tests.dir/all: modules/filesystem/CMakeFiles/FileSystem.dir/all
+	$(MAKE) $(MAKESILENT) -f modules/tests/CMakeFiles/Tests.dir/build.make modules/tests/CMakeFiles/Tests.dir/depend
+	$(MAKE) $(MAKESILENT) -f modules/tests/CMakeFiles/Tests.dir/build.make modules/tests/CMakeFiles/Tests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=9,10 "Built target Tests"
+.PHONY : modules/tests/CMakeFiles/Tests.dir/all
+
+# Build rule for subdir invocation for target.
+modules/tests/CMakeFiles/Tests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyr/Work/MyDB/code/build/CMakeFiles 8
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 modules/tests/CMakeFiles/Tests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyr/Work/MyDB/code/build/CMakeFiles 0
+.PHONY : modules/tests/CMakeFiles/Tests.dir/rule
+
+# Convenience name for target.
+Tests: modules/tests/CMakeFiles/Tests.dir/rule
+
+.PHONY : Tests
+
+# clean rule for target.
+modules/tests/CMakeFiles/Tests.dir/clean:
+	$(MAKE) $(MAKESILENT) -f modules/tests/CMakeFiles/Tests.dir/build.make modules/tests/CMakeFiles/Tests.dir/clean
+.PHONY : modules/tests/CMakeFiles/Tests.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

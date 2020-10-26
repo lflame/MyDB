@@ -98,6 +98,8 @@ MyDB_EXTERNAL_OBJECTS =
 
 MyDB: CMakeFiles/MyDB.dir/src/main.cpp.o
 MyDB: CMakeFiles/MyDB.dir/build.make
+MyDB: modules/tests/libTests.a
+MyDB: modules/logger/libLogger.a
 MyDB: modules/recordmanager/libRecordManager.a
 MyDB: modules/logger/libLogger.a
 MyDB: modules/filesystem/libFileSystem.a

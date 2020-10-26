@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/MyDB.dir/src/main.cpp.o -o MyDB  modules/recordmanager/libRecordManager.a modules/logger/libLogger.a modules/filesystem/libFileSystem.a 
+/usr/bin/c++ -g CMakeFiles/MyDB.dir/src/main.cpp.o -o MyDB  modules/tests/libTests.a modules/logger/libLogger.a modules/recordmanager/libRecordManager.a modules/logger/libLogger.a modules/filesystem/libFileSystem.a 

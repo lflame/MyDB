@@ -11,6 +11,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../modules/recordmanager/include"
+  "../modules/tests/include"
   "../modules/logger/include"
   "../modules/filesystem/include/bufmanager"
   "../modules/filesystem/include/fileio"

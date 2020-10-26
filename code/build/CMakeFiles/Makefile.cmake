@@ -13,6 +13,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../modules/filesystem/CMakeLists.txt"
   "../modules/logger/CMakeLists.txt"
   "../modules/recordmanager/CMakeLists.txt"
+  "../modules/tests/CMakeLists.txt"
   "/usr/share/cmake-3.18/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.18/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
   "/usr/share/cmake-3.18/Modules/CMakeCommonLanguageInclude.cmake"
@@ -43,6 +44,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "modules/recordmanager/CMakeFiles/CMakeDirectoryInformation.cmake"
   "modules/logger/CMakeFiles/CMakeDirectoryInformation.cmake"
   "modules/filesystem/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "modules/tests/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -51,4 +53,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "modules/recordmanager/CMakeFiles/RecordManager.dir/DependInfo.cmake"
   "modules/logger/CMakeFiles/Logger.dir/DependInfo.cmake"
   "modules/filesystem/CMakeFiles/FileSystem.dir/DependInfo.cmake"
+  "modules/tests/CMakeFiles/Tests.dir/DependInfo.cmake"
   )
