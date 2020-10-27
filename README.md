@@ -75,7 +75,27 @@ TODO: 存储到 log 文件中。
 
 ### 代码实现
 
-#### Buffer 读写
+#### Comp 类
+
+书写在 AttrType.cpp 中，主要用于对属性进行比较。
+
+主要函数为：`static bool comp(void *attr1, void *attr2, AttrType attrType, int attrLen, CompOp compOp);`
+
+将类型为 attrType 的 attr1 与 attr2 进行比较（注意若为 INT 需要转回主机序，若为 STRING 才会用上 attrLen），判断是否满足 compOp，其中 CompOp 定义如下：
+
+```
+enum class CompOp {
+    EQ_OP,
+    LT_OP,
+    GT_OP,
+    LE_OP,
+    GE_OP,
+    NE_OP,
+    NO_OP
+};
+```
+
+#### Buffer 读写类
 
 为了方便对 buffer 进行二进制读写，书写了类 BufferReader 和 BufferWriter，对二进制长数据、int 型数据、float 型数据的读写都进行了处理，其中 int 型数据在存储时以网络字节序存储。
 
