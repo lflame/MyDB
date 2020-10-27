@@ -132,6 +132,7 @@ class RecordManager {
 
     /*
      * 获取下一个满足某条件的记录
+     * **注意 value 为 int 时需要为网络序**
      * @参数 recordData：将返回的记录存储到此地址
      * @参数 suc：成功时返回 ture
      * @参数 rid：从该 rid 开始寻找

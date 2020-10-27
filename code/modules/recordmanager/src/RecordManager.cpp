@@ -198,7 +198,7 @@ void RecordManager::getNextRecord(char *recordData,
     while(rid.pageId < pageNum) {
         if (isUsedRID(rid)) {
             _readDataFromPage(rid.pageId, SLOT_OFFSET + rid.slotId*recSize, recordData, recSize);
-            if (Comp::comp(recordData, attrType, attrOffset, attrLen)) {
+            if (Comp::comp(recordData + attrOffset, value, attrType, attrLen, compOp)) {
                 suc = true;
                 break;
             }

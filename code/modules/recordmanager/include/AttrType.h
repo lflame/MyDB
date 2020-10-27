@@ -21,8 +21,8 @@ enum class CompOp {
 
 class Comp {
   public:
-    // 用于比较记录和 value，成功时返回 true
-    static bool comp(char *recordData, AttrType attrType, int attrOffset, int attrLen);
+    // **注意 attr 为 int 时需要为网络序**，满足 attr1 OP attr2 时返回 true
+    static bool comp(void *attr1, void *attr2, AttrType attrType, int attrLen, CompOp compOp);
 };
 
 #endif
