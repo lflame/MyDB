@@ -1,9 +1,10 @@
 #include "RecordManager.h"
 #include "bitset"
-#include "netinet/in.h"
 #include "cstring"
 #include "cassert"
 #include "Logger.h"
+#include "BufferReader.h"
+#include "BufferWriter.h"
 #define lowbit(x) ((x)&(-x))
 
 RecordManager::RecordManager() {
@@ -184,6 +185,32 @@ void RecordManager::getRecord(char *recordData, RID rid) {
     _readDataFromPage(rid.pageId, SLOT_OFFSET + rid.slotId*recSize, recordData, recSize);
 }
 
+void RecordManager::getNextRecord(char *recordData,
+                                  bool &suc,
+                                  RID rid,
+                                  AttrType attrType,
+                                  int attrOffset,
+                                  int attrLen,
+                                  CompOp compOp,
+                                  void *value) {
+    assert(fileId != -1);
+    suc = false;
+    while(rid.pageId < pageNum) {
+        if (isUsedRID(rid)) {
+            _readDataFromPage(rid.pageId, SLOT_OFFSET + rid.slotId*recSize, recordData, recSize);
+            if (Comp::comp(recordData, attrType, attrOffset, attrLen)) {
+                suc = true;
+                break;
+            }
+        }
+        // 找到下一个槽
+        if (++rid.slotId == recNumPerPage) {
+            rid.slotId = 0;
+            rid.pageId++;
+        }
+    }
+}
+
 void RecordManager::deleteRecord(RID rid) {
     assert(fileId != -1);
     freeRID(rid);
@@ -269,18 +296,14 @@ void RecordManager::_readIntFromPage(int pageId, int offset, int &value) {
     assert(fileId != -1);
     int index = -1;
     BufType buf = bufPageManager->getPage(fileId, pageId, index);
-    char *tmpBuf = (char*)buf;
-    memcpy(&value, tmpBuf+offset, 4);
-    value = ntohl(value);
+    BufferReader::readInt((char*)buf, offset, value);
 }
 
 void RecordManager::_writeIntToPage(int pageId, int offset, int value) {
     assert(fileId != -1);
     int index = -1;
     BufType buf = bufPageManager->getPage(fileId, pageId, index);
-    value = htonl(value);
-    char *tmpBuf = (char*)buf;
-    memcpy(tmpBuf+offset, &value, 4);
+    BufferWriter::writeInt((char*)buf, offset, value);
     bufPageManager->markDirty(index);
 }
 
@@ -288,15 +311,13 @@ void RecordManager::_readDataFromPage(int pageId, int offset, char *data, int le
     assert(fileId != -1);
     int index = -1;
     BufType buf = bufPageManager->getPage(fileId, pageId, index);
-    char *tmpBuf = (char*)buf;
-    memcpy(data, tmpBuf+offset, len);
+    BufferReader::read((char*)buf, offset, data, len);
 }
 
 void RecordManager::_writeDataToPage(int pageId, int offset, char *data, int len) {
     assert(fileId != -1);
     int index = -1;
     BufType buf = bufPageManager->getPage(fileId, pageId, index);
-    char *tmpBuf = (char*)buf;
-    memcpy(tmpBuf+offset, data, len);
+    BufferWriter::write((char*)buf, offset, data, len);
     bufPageManager->markDirty(index);
 }

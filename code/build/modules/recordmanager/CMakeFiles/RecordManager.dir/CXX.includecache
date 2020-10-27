@@ -86,6 +86,10 @@ FileManager.h
 AttrType.h
 ../modules/recordmanager/include/AttrType.h
 
+/home/yyr/Work/MyDB/code/modules/recordmanager/src/AttrType.cpp
+AttrType.h
+/home/yyr/Work/MyDB/code/modules/recordmanager/src/AttrType.h
+
 /home/yyr/Work/MyDB/code/modules/recordmanager/src/RecordManager.cpp
 RecordManager.h
 /home/yyr/Work/MyDB/code/modules/recordmanager/src/RecordManager.h

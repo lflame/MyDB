@@ -144,6 +144,33 @@ RecordManager/fast:
 	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/build
 .PHONY : RecordManager/fast
 
+src/AttrType.o: src/AttrType.cpp.o
+
+.PHONY : src/AttrType.o
+
+# target to build an object file
+src/AttrType.cpp.o:
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/src/AttrType.cpp.o
+.PHONY : src/AttrType.cpp.o
+
+src/AttrType.i: src/AttrType.cpp.i
+
+.PHONY : src/AttrType.i
+
+# target to preprocess a source file
+src/AttrType.cpp.i:
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/src/AttrType.cpp.i
+.PHONY : src/AttrType.cpp.i
+
+src/AttrType.s: src/AttrType.cpp.s
+
+.PHONY : src/AttrType.s
+
+# target to generate assembly for a file
+src/AttrType.cpp.s:
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/src/AttrType.cpp.s
+.PHONY : src/AttrType.cpp.s
+
 src/RecordManager.o: src/RecordManager.cpp.o
 
 .PHONY : src/RecordManager.o
@@ -180,6 +207,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... RecordManager"
+	@echo "... src/AttrType.o"
+	@echo "... src/AttrType.i"
+	@echo "... src/AttrType.s"
 	@echo "... src/RecordManager.o"
 	@echo "... src/RecordManager.i"
 	@echo "... src/RecordManager.s"

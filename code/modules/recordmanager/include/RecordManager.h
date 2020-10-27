@@ -1,5 +1,5 @@
-#ifndef _RECORDMANAGER_H_
-#define _RECORDMANAGER_H_
+#ifndef _RECORD_MANAGER_H_
+#define _RECORD_MANAGER_H_
 
 #include "BufPageManager.h"
 #include "FileManager.h"
@@ -125,14 +125,15 @@ class RecordManager {
 
     /*
      * 获取一个记录
-     * @参数 recordData：返回的记录存储到的位置
+     * @参数 recordData：将返回的记录存储到此地址
      * @参数 rid：存放记录的位置
      */
     void getRecord(char *recordData, RID rid);
 
     /*
-     * 获取下一个满足某条件的记录，成功找到时返回 true
-     * @参数 recordData：返回的记录存储的位置
+     * 获取下一个满足某条件的记录
+     * @参数 recordData：将返回的记录存储到此地址
+     * @参数 suc：成功时返回 ture
      * @参数 rid：从该 rid 开始寻找
      * @参数 attrType：属性类型
      * @参数 attrOffset：属性起始地址相对于记录地址的偏移量（字节）
@@ -140,7 +141,8 @@ class RecordManager {
      * @参数 compOp：同 value 比较的方式
      * @参数 value：在 compOp 不为 NO_OP 时有效
      */
-    bool getNextRecord(char *recordData,
+    void getNextRecord(char *recordData,
+                       bool &suc,
                        RID rid,
                        AttrType attrType,
                        int attrOffset,

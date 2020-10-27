@@ -1,5 +1,5 @@
-#ifndef _ATTRTYPE_H_
-#define _ATTRTYPE_H_
+#ifndef _ATTR_TYPE_H_
+#define _ATTR_TYPE_H_
 
 #define MAX_STRING_LEN 255
 
@@ -17,6 +17,12 @@ enum class CompOp {
     GE_OP,
     NE_OP,
     NO_OP
+};
+
+class Comp {
+  public:
+    // 用于比较记录和 value，成功时返回 true
+    static bool comp(char *recordData, AttrType attrType, int attrOffset, int attrLen);
 };
 
 #endif
