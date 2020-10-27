@@ -131,6 +131,24 @@ class RecordManager {
     void getRecord(char *recordData, RID rid);
 
     /*
+     * 获取下一个满足某条件的记录，成功找到时返回 true
+     * @参数 recordData：返回的记录存储的位置
+     * @参数 rid：从该 rid 开始寻找
+     * @参数 attrType：属性类型
+     * @参数 attrOffset：属性起始地址相对于记录地址的偏移量（字节）
+     * @参数 attrLen：属性的长度，仅在 attrType 为 STRING 时有效
+     * @参数 compOp：同 value 比较的方式
+     * @参数 value：在 compOp 不为 NO_OP 时有效
+     */
+    bool getNextRecord(char *recordData,
+                       RID rid,
+                       AttrType attrType,
+                       int attrOffset,
+                       int attrLen,
+                       CompOp compOp,
+                       void *value);
+
+    /*
      * 更新一个记录
      * @参数 recordData：要更新的记录数据
      * @参数 rid：存放记录的位置
