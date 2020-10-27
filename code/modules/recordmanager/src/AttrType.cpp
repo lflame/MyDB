@@ -1,5 +1,6 @@
 #include "AttrType.h"
 #include "cstring"
+#include "cmath"
 #include "BufferReader.h"
 
 bool Comp::comp(void *attr1, void *attr2, AttrType attrType, int attrLen, CompOp compOp) {
@@ -19,7 +20,7 @@ bool Comp::comp(void *attr1, void *attr2, AttrType attrType, int attrLen, CompOp
             float value1, value2;
             BufferReader::readFloat(attr1, 0, value1);
             BufferReader::readFloat(attr2, 0, value2);
-            res = value1 - value2;
+            res = sgn(value1 - value2);
             break;
         }
         case AttrType::STRING: {
@@ -52,4 +53,10 @@ bool Comp::comp(void *attr1, void *attr2, AttrType attrType, int attrLen, CompOp
     case CompOp::NE_OP:
         return res != 0;  
     }
+}
+
+int Comp::sgn(const float &value) {
+    if (fabs(value)<1e-6) return 0;
+    else if (value > 0) return 1;
+    else return -1;
 }

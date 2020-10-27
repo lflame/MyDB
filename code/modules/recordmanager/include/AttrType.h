@@ -23,6 +23,8 @@ class Comp {
   public:
     // **注意 attr 为 int 时需要为网络序**，满足 attr1 OP attr2 时返回 true
     static bool comp(void *attr1, void *attr2, AttrType attrType, int attrLen, CompOp compOp);
+
+    static int sgn(const float &value);
 };
 
 #endif

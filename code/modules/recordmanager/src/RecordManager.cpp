@@ -160,6 +160,7 @@ void RecordManager::freeRID(RID rid) {
 bool RecordManager::isUsedRID(RID rid) {
     assert(fileId != -1);
     int pageId = rid.pageId, slotId = rid.slotId;
+    if (pageId >= pageNum) return false;
     char tmp;
     _readDataFromPage(pageId, USABLE_BITMAP_OFFSET + slotId/8, &tmp, 1);
     int slotOffset = slotId - slotId/8*8;

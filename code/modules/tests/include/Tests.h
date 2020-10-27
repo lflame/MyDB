@@ -6,7 +6,12 @@ class Tests {
     void testAll();
 
     void testLogger();
-    void testRM();
+
+    // 测试大量插入、删除
+    void testRM1();
+
+    // 测试属性比较
+    void testRM2();
 };
 
 #endif

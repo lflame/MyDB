@@ -2,13 +2,17 @@
 #include "cstdio"
 #include "cstring"
 #include "cassert"
+#include "fcntl.h"
+#include "netinet/in.h"
 #include "Logger.h"
 #include "RecordManager.h"
-#include "fcntl.h"
+#include "BufferReader.h"
+#include "BufferWriter.h"
 
 void Tests::testAll() {
     // testLogger();
-    testRM();
+    testRM1();
+    testRM2();
     Logger::logger.debug("测试通过");
 }
 
@@ -24,8 +28,8 @@ void Tests::testLogger() {
     Logger::logger.info("End testLogger.");
 }
 
-void Tests::testRM() {
-    Logger::logger.info("Start testRM.");
+void Tests::testRM1() {
+    Logger::logger.info("Start testRM1.");
     const char* filename = "test.db";
 
     // 测试创建文件后初始文件头
@@ -78,5 +82,90 @@ void Tests::testRM() {
     Logger::logger.debug("rid.pageId: %d, rid.slotId: %d", rid.pageId, rid.slotId);
     assert(rid == RID(2, 2));
 
-    Logger::logger.info("End testRM.");
+    rm.closeFile();
+    Logger::logger.info("End testRM1.");
+}
+
+void Tests::testRM2() {
+    Logger::logger.info("Start testRM2.");
+    const char* filename = "test.db";
+
+    // 测试创建文件后初始文件头
+    RecordManager rm;
+    if (access(filename, F_OK) != -1) {
+        // 测试文件已存在，需要先删除
+        rm.deleteFile(filename);
+    }
+    // int + float + 5 bytes string
+    const int testRecSize = 13;
+    rm.createFile(filename, testRecSize);
+    rm.openFile(filename);
+
+    // record1: 5 1.32 ab
+    // record2: -3 2.15 abc
+    // record3: 5 2.15 ab
+    // record4: -9 2.0 aba
+    char record1[testRecSize], record2[testRecSize], record3[testRecSize], record4[testRecSize];
+    BufferWriter::writeInt(record1, 0, 5);
+    BufferWriter::writeFloat(record1, 4, 1.32);
+    BufferWriter::write(record1, 8, (void*)"ab", 3);
+
+    BufferWriter::writeInt(record2, 0, -3);
+    BufferWriter::writeFloat(record2, 4, 2.15);
+    BufferWriter::write(record2, 8, (void*)"abc", 4);
+
+    BufferWriter::writeInt(record3, 0, 5);
+    BufferWriter::writeFloat(record3, 4, 2.15);
+    BufferWriter::write(record3, 8, (void*)"ab", 3);
+
+    BufferWriter::writeInt(record4, 0, -9);
+    BufferWriter::writeFloat(record4, 4, 2.0);
+    BufferWriter::write(record4, 8, (void*)"aba", 4);
+
+    RID rid;
+    rm.insertRecord(record1, rid);
+    rm.insertRecord(record2, rid);
+    rm.insertRecord(record3, rid);
+    rm.insertRecord(record4, rid);
+
+    // 查找 int 值小于 0 的第一个 record
+    char tmpRecord[testRecSize];
+    bool suc;
+    int tmpInt = htonl(0);
+    float tmpFloat;
+    char tmpString[5];
+    rm.getNextRecord(tmpRecord, suc, RID(1, 0), AttrType::INT, 0, 4, CompOp::LT_OP, &tmpInt);
+    assert(suc);
+    BufferReader::readInt(tmpRecord, 0, tmpInt);
+    BufferReader::readFloat(tmpRecord, 4, tmpFloat);
+    BufferReader::read(tmpRecord, 8, tmpString, 5);
+    Logger::logger.debug("record: %d %.3f %s", tmpInt, tmpFloat, tmpString);
+    assert(tmpInt==-3 && Comp::sgn(tmpFloat-2.15)==0 && strcmp(tmpString, "abc")==0);
+
+    // 删除 record2
+    rm.deleteRecord(RID(1, 1));
+
+    // 查找 float 值等于 2.15 的第一个 record
+    tmpFloat = 2.15;
+    rm.getNextRecord(tmpRecord, suc, RID(1, 0), AttrType::FLOAT, 4, 4, CompOp::EQ_OP, &tmpFloat);
+    assert(suc);
+    BufferReader::readInt(tmpRecord, 0, tmpInt);
+    BufferReader::readFloat(tmpRecord, 4, tmpFloat);
+    BufferReader::read(tmpRecord, 8, tmpString, 5);
+    Logger::logger.debug("record: %d %.3f %s", tmpInt, tmpFloat, tmpString);
+    assert(tmpInt==5 && Comp::sgn(tmpFloat-2.15)==0 && strcmp(tmpString, "ab")==0);
+
+    // 查找 record2 之后 String 串大于 ab 的第一个 record
+    strcpy(tmpString, "ab");
+    rm.getNextRecord(tmpRecord, suc, RID(1, 1), AttrType::STRING, 8, 5, CompOp::GT_OP, tmpString);
+    assert(suc);
+    BufferReader::readInt(tmpRecord, 0, tmpInt);
+    BufferReader::readFloat(tmpRecord, 4, tmpFloat);
+    BufferReader::read(tmpRecord, 8, tmpString, 5);
+    Logger::logger.debug("record: %d %.3f %s", tmpInt, tmpFloat, tmpString);
+    assert(tmpInt==-9 && Comp::sgn(tmpFloat-2)==0 && strcmp(tmpString, "aba")==0);
+
+
+    rm.closeFile();
+    Logger::logger.info("End testRM2.");
 }
