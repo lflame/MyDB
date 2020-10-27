@@ -5,6 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/yyr/Work/MyDB/code/modules/recordmanager/src/AttrType.cpp" "/home/yyr/Work/MyDB/code/build/modules/recordmanager/CMakeFiles/RecordManager.dir/src/AttrType.cpp.o"
+  "/home/yyr/Work/MyDB/code/modules/recordmanager/src/BufferReader.cpp" "/home/yyr/Work/MyDB/code/build/modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferReader.cpp.o"
+  "/home/yyr/Work/MyDB/code/modules/recordmanager/src/BufferWriter.cpp" "/home/yyr/Work/MyDB/code/build/modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.o"
   "/home/yyr/Work/MyDB/code/modules/recordmanager/src/RecordManager.cpp" "/home/yyr/Work/MyDB/code/build/modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

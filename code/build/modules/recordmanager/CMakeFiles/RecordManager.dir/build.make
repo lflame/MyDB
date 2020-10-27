@@ -102,19 +102,49 @@ modules/recordmanager/CMakeFiles/RecordManager.dir/src/AttrType.cpp.s: cmake_for
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RecordManager.dir/src/AttrType.cpp.s"
 	cd /home/yyr/Work/MyDB/code/build/modules/recordmanager && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yyr/Work/MyDB/code/modules/recordmanager/src/AttrType.cpp -o CMakeFiles/RecordManager.dir/src/AttrType.cpp.s
 
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferReader.cpp.o: modules/recordmanager/CMakeFiles/RecordManager.dir/flags.make
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferReader.cpp.o: ../modules/recordmanager/src/BufferReader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferReader.cpp.o"
+	cd /home/yyr/Work/MyDB/code/build/modules/recordmanager && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RecordManager.dir/src/BufferReader.cpp.o -c /home/yyr/Work/MyDB/code/modules/recordmanager/src/BufferReader.cpp
+
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferReader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RecordManager.dir/src/BufferReader.cpp.i"
+	cd /home/yyr/Work/MyDB/code/build/modules/recordmanager && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yyr/Work/MyDB/code/modules/recordmanager/src/BufferReader.cpp > CMakeFiles/RecordManager.dir/src/BufferReader.cpp.i
+
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferReader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RecordManager.dir/src/BufferReader.cpp.s"
+	cd /home/yyr/Work/MyDB/code/build/modules/recordmanager && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yyr/Work/MyDB/code/modules/recordmanager/src/BufferReader.cpp -o CMakeFiles/RecordManager.dir/src/BufferReader.cpp.s
+
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.o: modules/recordmanager/CMakeFiles/RecordManager.dir/flags.make
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.o: ../modules/recordmanager/src/BufferWriter.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.o"
+	cd /home/yyr/Work/MyDB/code/build/modules/recordmanager && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.o -c /home/yyr/Work/MyDB/code/modules/recordmanager/src/BufferWriter.cpp
+
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.i"
+	cd /home/yyr/Work/MyDB/code/build/modules/recordmanager && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yyr/Work/MyDB/code/modules/recordmanager/src/BufferWriter.cpp > CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.i
+
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.s"
+	cd /home/yyr/Work/MyDB/code/build/modules/recordmanager && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yyr/Work/MyDB/code/modules/recordmanager/src/BufferWriter.cpp -o CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.s
+
 # Object files for target RecordManager
 RecordManager_OBJECTS = \
 "CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o" \
-"CMakeFiles/RecordManager.dir/src/AttrType.cpp.o"
+"CMakeFiles/RecordManager.dir/src/AttrType.cpp.o" \
+"CMakeFiles/RecordManager.dir/src/BufferReader.cpp.o" \
+"CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.o"
 
 # External object files for target RecordManager
 RecordManager_EXTERNAL_OBJECTS =
 
 modules/recordmanager/libRecordManager.a: modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o
 modules/recordmanager/libRecordManager.a: modules/recordmanager/CMakeFiles/RecordManager.dir/src/AttrType.cpp.o
+modules/recordmanager/libRecordManager.a: modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferReader.cpp.o
+modules/recordmanager/libRecordManager.a: modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.o
 modules/recordmanager/libRecordManager.a: modules/recordmanager/CMakeFiles/RecordManager.dir/build.make
 modules/recordmanager/libRecordManager.a: modules/recordmanager/CMakeFiles/RecordManager.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libRecordManager.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libRecordManager.a"
 	cd /home/yyr/Work/MyDB/code/build/modules/recordmanager && $(CMAKE_COMMAND) -P CMakeFiles/RecordManager.dir/cmake_clean_target.cmake
 	cd /home/yyr/Work/MyDB/code/build/modules/recordmanager && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/RecordManager.dir/link.txt --verbose=$(VERBOSE)
 

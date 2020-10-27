@@ -171,6 +171,60 @@ src/AttrType.cpp.s:
 	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/src/AttrType.cpp.s
 .PHONY : src/AttrType.cpp.s
 
+src/BufferReader.o: src/BufferReader.cpp.o
+
+.PHONY : src/BufferReader.o
+
+# target to build an object file
+src/BufferReader.cpp.o:
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferReader.cpp.o
+.PHONY : src/BufferReader.cpp.o
+
+src/BufferReader.i: src/BufferReader.cpp.i
+
+.PHONY : src/BufferReader.i
+
+# target to preprocess a source file
+src/BufferReader.cpp.i:
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferReader.cpp.i
+.PHONY : src/BufferReader.cpp.i
+
+src/BufferReader.s: src/BufferReader.cpp.s
+
+.PHONY : src/BufferReader.s
+
+# target to generate assembly for a file
+src/BufferReader.cpp.s:
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferReader.cpp.s
+.PHONY : src/BufferReader.cpp.s
+
+src/BufferWriter.o: src/BufferWriter.cpp.o
+
+.PHONY : src/BufferWriter.o
+
+# target to build an object file
+src/BufferWriter.cpp.o:
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.o
+.PHONY : src/BufferWriter.cpp.o
+
+src/BufferWriter.i: src/BufferWriter.cpp.i
+
+.PHONY : src/BufferWriter.i
+
+# target to preprocess a source file
+src/BufferWriter.cpp.i:
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.i
+.PHONY : src/BufferWriter.cpp.i
+
+src/BufferWriter.s: src/BufferWriter.cpp.s
+
+.PHONY : src/BufferWriter.s
+
+# target to generate assembly for a file
+src/BufferWriter.cpp.s:
+	cd /home/yyr/Work/MyDB/code/build && $(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.s
+.PHONY : src/BufferWriter.cpp.s
+
 src/RecordManager.o: src/RecordManager.cpp.o
 
 .PHONY : src/RecordManager.o
@@ -210,6 +264,12 @@ help:
 	@echo "... src/AttrType.o"
 	@echo "... src/AttrType.i"
 	@echo "... src/AttrType.s"
+	@echo "... src/BufferReader.o"
+	@echo "... src/BufferReader.i"
+	@echo "... src/BufferReader.s"
+	@echo "... src/BufferWriter.o"
+	@echo "... src/BufferWriter.i"
+	@echo "... src/BufferWriter.s"
 	@echo "... src/RecordManager.o"
 	@echo "... src/RecordManager.i"
 	@echo "... src/RecordManager.s"

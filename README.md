@@ -75,6 +75,12 @@ TODO: 存储到 log 文件中。
 
 ### 代码实现
 
-实现了类 RecordManager，并且在其中实现了 `_readIntFromPage/_writeIntToPage` 和 `_readDataFromPage/_writeDataToPage` 用于对于页的较底层的读写，以及其它对页中存储的参数进行直接操作的较高层的读写，例如 `_readFileHeaderPage(FileHeaderPageParameterType type)` 和 `_readDataPagePointer(int pageId, bool isPrev, int &pointer);` 等。
+#### Buffer 读写
+
+为了方便对 buffer 进行二进制读写，书写了类 BufferReader 和 BufferWriter，对二进制长数据、int 型数据、float 型数据的读写都进行了处理，其中 int 型数据在存储时以网络字节序存储。
+
+#### RecordManager 类
+
+实现了类 RecordManager，并且在其中实现了 `_readIntFromPage/_writeIntToPage` 和 `_readDataFromPage/_writeDataToPage` 用于对于页的较底层的读写(将调用 BufferReader/BufferWriter 的静态函数实现)，以及其它对页中存储的参数进行直接操作的较高层的读写，例如 `_readFileHeaderPage(FileHeaderPageParameterType type)` 和 `_readDataPagePointer(int pageId, bool isPrev, int &pointer);` 等。
 
 在读写操作的基础上，只需要按照上面设计思路进行设计即可，唯一需要注意的就是链表的维护。

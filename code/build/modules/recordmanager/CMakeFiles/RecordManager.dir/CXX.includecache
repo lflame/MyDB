@@ -78,6 +78,10 @@ cstdio
 
 ../modules/recordmanager/include/AttrType.h
 
+../modules/recordmanager/include/BufferReader.h
+
+../modules/recordmanager/include/BufferWriter.h
+
 ../modules/recordmanager/include/RecordManager.h
 BufPageManager.h
 ../modules/recordmanager/include/BufPageManager.h
@@ -86,21 +90,27 @@ FileManager.h
 AttrType.h
 ../modules/recordmanager/include/AttrType.h
 
-/home/yyr/Work/MyDB/code/modules/recordmanager/src/AttrType.cpp
-AttrType.h
-/home/yyr/Work/MyDB/code/modules/recordmanager/src/AttrType.h
+/home/yyr/Work/MyDB/code/modules/recordmanager/src/BufferReader.cpp
+BufferReader.h
+/home/yyr/Work/MyDB/code/modules/recordmanager/src/BufferReader.h
+cstring
+/home/yyr/Work/MyDB/code/modules/recordmanager/src/cstring
+netinet/in.h
+/home/yyr/Work/MyDB/code/modules/recordmanager/src/netinet/in.h
 
 /home/yyr/Work/MyDB/code/modules/recordmanager/src/RecordManager.cpp
 RecordManager.h
 /home/yyr/Work/MyDB/code/modules/recordmanager/src/RecordManager.h
 bitset
 /home/yyr/Work/MyDB/code/modules/recordmanager/src/bitset
-netinet/in.h
-/home/yyr/Work/MyDB/code/modules/recordmanager/src/netinet/in.h
 cstring
 /home/yyr/Work/MyDB/code/modules/recordmanager/src/cstring
 cassert
 /home/yyr/Work/MyDB/code/modules/recordmanager/src/cassert
 Logger.h
 /home/yyr/Work/MyDB/code/modules/recordmanager/src/Logger.h
+BufferReader.h
+/home/yyr/Work/MyDB/code/modules/recordmanager/src/BufferReader.h
+BufferWriter.h
+/home/yyr/Work/MyDB/code/modules/recordmanager/src/BufferWriter.h
 

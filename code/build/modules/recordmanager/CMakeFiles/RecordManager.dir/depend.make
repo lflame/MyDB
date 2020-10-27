@@ -4,6 +4,12 @@
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/AttrType.cpp.o: ../modules/recordmanager/include/AttrType.h
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/AttrType.cpp.o: ../modules/recordmanager/src/AttrType.cpp
 
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferReader.cpp.o: ../modules/recordmanager/include/BufferReader.h
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferReader.cpp.o: ../modules/recordmanager/src/BufferReader.cpp
+
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.o: ../modules/recordmanager/include/BufferWriter.h
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.o: ../modules/recordmanager/src/BufferWriter.cpp
+
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/filesystem/include/bufmanager/BufPageManager.h
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/filesystem/include/bufmanager/FindReplace.h
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/filesystem/include/fileio/FileManager.h
@@ -13,6 +19,8 @@ modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../m
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/filesystem/include/utils/pagedef.h
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/logger/include/Logger.h
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/recordmanager/include/AttrType.h
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/recordmanager/include/BufferReader.h
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/recordmanager/include/BufferWriter.h
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/recordmanager/include/RecordManager.h
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/recordmanager/src/RecordManager.cpp
 

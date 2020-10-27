@@ -3,7 +3,7 @@
 #include "netinet/in.h"
 
 void BufferWriter::write(void *buf, int offset, void *data, int len) {
-    memcpy(buf + offset, data, len);
+    memcpy((char*)buf + offset, data, len);
 }
 
 void BufferWriter::writeInt(void *buf, int offset, int value) {

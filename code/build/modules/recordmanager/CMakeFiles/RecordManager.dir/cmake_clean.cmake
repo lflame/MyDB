@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/RecordManager.dir/src/AttrType.cpp.o"
+  "CMakeFiles/RecordManager.dir/src/BufferReader.cpp.o"
+  "CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.o"
   "CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o"
   "libRecordManager.a"
   "libRecordManager.pdb"

@@ -4,6 +4,12 @@
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/AttrType.cpp.o
  ../modules/recordmanager/include/AttrType.h
  /home/yyr/Work/MyDB/code/modules/recordmanager/src/AttrType.cpp
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferReader.cpp.o
+ ../modules/recordmanager/include/BufferReader.h
+ /home/yyr/Work/MyDB/code/modules/recordmanager/src/BufferReader.cpp
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferWriter.cpp.o
+ ../modules/recordmanager/include/BufferWriter.h
+ /home/yyr/Work/MyDB/code/modules/recordmanager/src/BufferWriter.cpp
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o
  ../modules/filesystem/include/bufmanager/BufPageManager.h
  ../modules/filesystem/include/bufmanager/FindReplace.h
@@ -14,5 +20,7 @@ modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o
  ../modules/filesystem/include/utils/pagedef.h
  ../modules/logger/include/Logger.h
  ../modules/recordmanager/include/AttrType.h
+ ../modules/recordmanager/include/BufferReader.h
+ ../modules/recordmanager/include/BufferWriter.h
  ../modules/recordmanager/include/RecordManager.h
  /home/yyr/Work/MyDB/code/modules/recordmanager/src/RecordManager.cpp
