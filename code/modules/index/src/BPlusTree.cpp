@@ -16,7 +16,6 @@ void BNode::update() {
 }
 
 int BNode::keyToChild(int k) {
-    assert(chnum != 0);
     int ret;
     for (ret = 0; ret <= chnum; ++ret) {
         if (k <= keys[ret]) break;
@@ -28,6 +27,10 @@ int BNode::getChildInd(BNode *p) {
     for (int i = 0; i < chnum; ++i) if (ch[i] == p) return i;
     assert(0);
     return -1;
+}
+
+bool BNode::isLeaf() {
+    return chnum == 0 || ch[0] == nullptr;
 }
 
 void BNode::insertChild(int c, BNode *p, int k) {
@@ -58,7 +61,7 @@ BNode* BPlusTree::newNode() {
 
 BNode* BPlusTree::findNode(int k) {
     BNode *s = root;
-    while (s->chnum) {
+    while (!s->isLeaf()) {
         int c = s->keyToChild(k);
         s = s->ch[c];
     }
@@ -103,10 +106,9 @@ void BPlusTree::insertNode(int k) {
     handleSplit(p);
 }
 
-void printTreeUpdateInd(BNode *s, std::map<BNode*, int>& mp, int &lastInd) {
-    if (mp.find(s) == mp.end()) {
-        mp[s] = ++lastInd;
-    }
+void BPlusTree::printTreeUpdateInd(BNode *s, std::map<BNode*, int>& mp, int &lastInd) {
+    if (s == nullptr) mp[s] = 0;
+    else if (mp.find(s) == mp.end()) mp[s] = ++lastInd;
 }
 
 void BPlusTree::printTree(BNode *s, map<BNode*, int> &mp, int &lastInd) {

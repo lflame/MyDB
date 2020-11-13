@@ -28,6 +28,9 @@ struct BPlusTreeNode {
     // 判断 p 为当前节点的哪个儿子，返回子节点下标
     int getChildInd(BNode *p);
 
+    // 检查是否为叶子节点
+    bool isLeaf();
+
     // 将节点 p 及键 k 分别插入到 ch[c] 和 keys[c] 上，p 可以为 nullptr
     void insertChild(int c, BNode *p, int k);
 };

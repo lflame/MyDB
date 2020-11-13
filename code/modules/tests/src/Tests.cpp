@@ -174,4 +174,10 @@ void Tests::testRM2() {
 
 void Tests::testBPlusTree() {
     BPlusTree tree;
+    tree.insertNode(5);
+    tree.insertNode(2);
+    tree.insertNode(9);
+    tree.insertNode(4);
+    tree.insertNode(3);
+    tree.printTree();
 }
