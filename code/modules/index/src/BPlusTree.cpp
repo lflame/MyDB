@@ -9,9 +9,11 @@ using std::string;
 using std::map;
 
 void BNode::update() {
-    for (int i = 0; i < chnum; ++i) {
-        assert(ch[i]->chnum != 0);
-        keys[i] = ch[i]->keys[ch[i]->chnum-1];
+    if (!isLeaf()) {
+        for (int i = 0; i < chnum; ++i) {
+            assert(ch[i]->chnum != 0);
+            keys[i] = ch[i]->keys[ch[i]->chnum-1];
+        }
     }
 }
 
@@ -35,7 +37,7 @@ bool BNode::isLeaf() {
 
 void BNode::insertChild(int c, BNode *p, int k) {
     assert(chnum <= HIGH+1);
-    for (int i = chnum; i >= c; --i) {
+    for (int i = chnum-1; i >= c; --i) {
         ch[i+1] = ch[i];
         keys[i+1] = keys[i];
     }

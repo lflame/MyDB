@@ -179,5 +179,6 @@ void Tests::testBPlusTree() {
     tree.insertNode(9);
     tree.insertNode(4);
     tree.insertNode(3);
+    tree.insertNode(6);
     tree.printTree();
 }
