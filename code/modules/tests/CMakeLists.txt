@@ -7,3 +7,4 @@ target_include_directories(RecordManager PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl
 target_link_libraries(Tests Logger)
 target_link_libraries(Tests FileSystem)
 target_link_libraries(Tests RecordManager)
+target_link_libraries(Tests Index)

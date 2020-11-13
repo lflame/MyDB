@@ -8,6 +8,7 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/modules/recordmanager)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/modules/logger)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/modules/filesystem)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/modules/tests)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/modules/index)
 target_link_libraries(MyDB PUBLIC Tests)
 target_link_libraries(MyDB PUBLIC Logger)
 

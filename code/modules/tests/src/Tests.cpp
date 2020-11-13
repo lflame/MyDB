@@ -8,11 +8,13 @@
 #include "RecordManager.h"
 #include "BufferReader.h"
 #include "BufferWriter.h"
+#include "BPlusTree.h"
 
 void Tests::testAll() {
     // testLogger();
-    testRM1();
-    testRM2();
+    // testRM1();
+    // testRM2();
+    testBPlusTree();
     Logger::logger.debug("测试通过");
 }
 
@@ -168,4 +170,8 @@ void Tests::testRM2() {
 
     rm.closeFile();
     Logger::logger.info("End testRM2.");
+}
+
+void Tests::testBPlusTree() {
+    BPlusTree tree;
 }

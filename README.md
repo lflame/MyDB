@@ -81,7 +81,7 @@ TODO: 存储到 log 文件中。
 
 主要函数为：`static bool comp(void *attr1, void *attr2, AttrType attrType, int attrLen, CompOp compOp);`
 
-将类型为 attrType 的 attr1 与 attr2 进行比较（注意若为 INT 需要转回主机序，若为 STRING 才会用上 attrLen），判断是否满足 compOp，其中 CompOp 定义如下：
+将类型为 attrType 的 attr1 与 attr2 进行比较（注意若为 INT 需要转回主机序，另外若为 STRING 才会用上 attrLen），判断是否满足 compOp，其中 CompOp 定义如下：
 
 ```
 enum class CompOp {

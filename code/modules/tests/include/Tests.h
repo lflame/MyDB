@@ -12,6 +12,9 @@ class Tests {
 
     // 测试属性比较
     void testRM2();
+
+    // 测试 B+ 树
+    void testBPlusTree();
 };
 
 #endif

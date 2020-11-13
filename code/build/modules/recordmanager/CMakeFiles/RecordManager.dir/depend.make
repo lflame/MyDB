@@ -22,6 +22,7 @@ modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../m
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/recordmanager/include/AttrType.h
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/recordmanager/include/BufferReader.h
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/recordmanager/include/BufferWriter.h
+modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/recordmanager/include/RID.h
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/recordmanager/include/RecordManager.h
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/RecordManager.cpp.o: ../modules/recordmanager/src/RecordManager.cpp
 

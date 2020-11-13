@@ -194,6 +194,19 @@ Tests/fast:
 	$(MAKE) $(MAKESILENT) -f modules/tests/CMakeFiles/Tests.dir/build.make modules/tests/CMakeFiles/Tests.dir/build
 .PHONY : Tests/fast
 
+#=============================================================================
+# Target rules for targets named Index
+
+# Build rule for target.
+Index: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Index
+.PHONY : Index
+
+# fast build rule for target.
+Index/fast:
+	$(MAKE) $(MAKESILENT) -f modules/index/CMakeFiles/Index.dir/build.make modules/index/CMakeFiles/Index.dir/build
+.PHONY : Index/fast
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -230,6 +243,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... FileSystem"
+	@echo "... Index"
 	@echo "... Logger"
 	@echo "... MyDB"
 	@echo "... RecordManager"

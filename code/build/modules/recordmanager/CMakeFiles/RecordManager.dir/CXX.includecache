@@ -82,6 +82,8 @@ cstdio
 
 ../modules/recordmanager/include/BufferWriter.h
 
+../modules/recordmanager/include/RID.h
+
 ../modules/recordmanager/include/RecordManager.h
 BufPageManager.h
 ../modules/recordmanager/include/BufPageManager.h
@@ -89,16 +91,8 @@ FileManager.h
 ../modules/recordmanager/include/FileManager.h
 AttrType.h
 ../modules/recordmanager/include/AttrType.h
-
-/home/yyr/Work/MyDB/code/modules/recordmanager/src/AttrType.cpp
-AttrType.h
-/home/yyr/Work/MyDB/code/modules/recordmanager/src/AttrType.h
-cstring
-/home/yyr/Work/MyDB/code/modules/recordmanager/src/cstring
-cmath
-/home/yyr/Work/MyDB/code/modules/recordmanager/src/cmath
-BufferReader.h
-/home/yyr/Work/MyDB/code/modules/recordmanager/src/BufferReader.h
+RID.h
+../modules/recordmanager/include/RID.h
 
 /home/yyr/Work/MyDB/code/modules/recordmanager/src/RecordManager.cpp
 RecordManager.h

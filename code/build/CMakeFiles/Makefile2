@@ -77,6 +77,7 @@ all: modules/recordmanager/all
 all: modules/logger/all
 all: modules/filesystem/all
 all: modules/tests/all
+all: modules/index/all
 
 .PHONY : all
 
@@ -85,6 +86,7 @@ preinstall: modules/recordmanager/preinstall
 preinstall: modules/logger/preinstall
 preinstall: modules/filesystem/preinstall
 preinstall: modules/tests/preinstall
+preinstall: modules/index/preinstall
 
 .PHONY : preinstall
 
@@ -94,6 +96,7 @@ clean: modules/recordmanager/clean
 clean: modules/logger/clean
 clean: modules/filesystem/clean
 clean: modules/tests/clean
+clean: modules/index/clean
 
 .PHONY : clean
 
@@ -114,6 +117,24 @@ modules/filesystem/preinstall:
 modules/filesystem/clean: modules/filesystem/CMakeFiles/FileSystem.dir/clean
 
 .PHONY : modules/filesystem/clean
+
+#=============================================================================
+# Directory level rules for directory modules/index
+
+# Recursive "all" directory target.
+modules/index/all: modules/index/CMakeFiles/Index.dir/all
+
+.PHONY : modules/index/all
+
+# Recursive "preinstall" directory target.
+modules/index/preinstall:
+
+.PHONY : modules/index/preinstall
+
+# Recursive "clean" directory target.
+modules/index/clean: modules/index/CMakeFiles/Index.dir/clean
+
+.PHONY : modules/index/clean
 
 #=============================================================================
 # Directory level rules for directory modules/logger
@@ -177,14 +198,15 @@ CMakeFiles/MyDB.dir/all: modules/recordmanager/CMakeFiles/RecordManager.dir/all
 CMakeFiles/MyDB.dir/all: modules/logger/CMakeFiles/Logger.dir/all
 CMakeFiles/MyDB.dir/all: modules/filesystem/CMakeFiles/FileSystem.dir/all
 CMakeFiles/MyDB.dir/all: modules/tests/CMakeFiles/Tests.dir/all
+CMakeFiles/MyDB.dir/all: modules/index/CMakeFiles/Index.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyDB.dir/build.make CMakeFiles/MyDB.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyDB.dir/build.make CMakeFiles/MyDB.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=5,6 "Built target MyDB"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=8,9 "Built target MyDB"
 .PHONY : CMakeFiles/MyDB.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/MyDB.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyr/Work/MyDB/code/build/CMakeFiles 13
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyr/Work/MyDB/code/build/CMakeFiles 16
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/MyDB.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyr/Work/MyDB/code/build/CMakeFiles 0
 .PHONY : CMakeFiles/MyDB.dir/rule
@@ -207,7 +229,7 @@ modules/recordmanager/CMakeFiles/RecordManager.dir/all: modules/logger/CMakeFile
 modules/recordmanager/CMakeFiles/RecordManager.dir/all: modules/filesystem/CMakeFiles/FileSystem.dir/all
 	$(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/depend
 	$(MAKE) $(MAKESILENT) -f modules/recordmanager/CMakeFiles/RecordManager.dir/build.make modules/recordmanager/CMakeFiles/RecordManager.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=7,8,9,10,11 "Built target RecordManager"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=10,11,12,13,14 "Built target RecordManager"
 .PHONY : modules/recordmanager/CMakeFiles/RecordManager.dir/all
 
 # Build rule for subdir invocation for target.
@@ -234,7 +256,7 @@ modules/recordmanager/CMakeFiles/RecordManager.dir/clean:
 modules/logger/CMakeFiles/Logger.dir/all:
 	$(MAKE) $(MAKESILENT) -f modules/logger/CMakeFiles/Logger.dir/build.make modules/logger/CMakeFiles/Logger.dir/depend
 	$(MAKE) $(MAKESILENT) -f modules/logger/CMakeFiles/Logger.dir/build.make modules/logger/CMakeFiles/Logger.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=3,4 "Built target Logger"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=6,7 "Built target Logger"
 .PHONY : modules/logger/CMakeFiles/Logger.dir/all
 
 # Build rule for subdir invocation for target.
@@ -288,14 +310,15 @@ modules/filesystem/CMakeFiles/FileSystem.dir/clean:
 modules/tests/CMakeFiles/Tests.dir/all: modules/recordmanager/CMakeFiles/RecordManager.dir/all
 modules/tests/CMakeFiles/Tests.dir/all: modules/logger/CMakeFiles/Logger.dir/all
 modules/tests/CMakeFiles/Tests.dir/all: modules/filesystem/CMakeFiles/FileSystem.dir/all
+modules/tests/CMakeFiles/Tests.dir/all: modules/index/CMakeFiles/Index.dir/all
 	$(MAKE) $(MAKESILENT) -f modules/tests/CMakeFiles/Tests.dir/build.make modules/tests/CMakeFiles/Tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f modules/tests/CMakeFiles/Tests.dir/build.make modules/tests/CMakeFiles/Tests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=12,13 "Built target Tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=15,16 "Built target Tests"
 .PHONY : modules/tests/CMakeFiles/Tests.dir/all
 
 # Build rule for subdir invocation for target.
 modules/tests/CMakeFiles/Tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyr/Work/MyDB/code/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyr/Work/MyDB/code/build/CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 modules/tests/CMakeFiles/Tests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyr/Work/MyDB/code/build/CMakeFiles 0
 .PHONY : modules/tests/CMakeFiles/Tests.dir/rule
@@ -309,6 +332,35 @@ Tests: modules/tests/CMakeFiles/Tests.dir/rule
 modules/tests/CMakeFiles/Tests.dir/clean:
 	$(MAKE) $(MAKESILENT) -f modules/tests/CMakeFiles/Tests.dir/build.make modules/tests/CMakeFiles/Tests.dir/clean
 .PHONY : modules/tests/CMakeFiles/Tests.dir/clean
+
+#=============================================================================
+# Target rules for target modules/index/CMakeFiles/Index.dir
+
+# All Build rule for target.
+modules/index/CMakeFiles/Index.dir/all: modules/recordmanager/CMakeFiles/RecordManager.dir/all
+modules/index/CMakeFiles/Index.dir/all: modules/logger/CMakeFiles/Logger.dir/all
+modules/index/CMakeFiles/Index.dir/all: modules/filesystem/CMakeFiles/FileSystem.dir/all
+	$(MAKE) $(MAKESILENT) -f modules/index/CMakeFiles/Index.dir/build.make modules/index/CMakeFiles/Index.dir/depend
+	$(MAKE) $(MAKESILENT) -f modules/index/CMakeFiles/Index.dir/build.make modules/index/CMakeFiles/Index.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyr/Work/MyDB/code/build/CMakeFiles --progress-num=3,4,5 "Built target Index"
+.PHONY : modules/index/CMakeFiles/Index.dir/all
+
+# Build rule for subdir invocation for target.
+modules/index/CMakeFiles/Index.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyr/Work/MyDB/code/build/CMakeFiles 12
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 modules/index/CMakeFiles/Index.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyr/Work/MyDB/code/build/CMakeFiles 0
+.PHONY : modules/index/CMakeFiles/Index.dir/rule
+
+# Convenience name for target.
+Index: modules/index/CMakeFiles/Index.dir/rule
+
+.PHONY : Index
+
+# clean rule for target.
+modules/index/CMakeFiles/Index.dir/clean:
+	$(MAKE) $(MAKESILENT) -f modules/index/CMakeFiles/Index.dir/build.make modules/index/CMakeFiles/Index.dir/clean
+.PHONY : modules/index/CMakeFiles/Index.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
