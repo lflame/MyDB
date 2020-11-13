@@ -17,7 +17,7 @@ void BNode::update() {
 
 int BNode::keyToChild(int k) {
     int ret;
-    for (ret = 0; ret <= chnum; ++ret) {
+    for (ret = 0; ret < chnum; ++ret) {
         if (k <= keys[ret]) break;
     }
     return ret;
