@@ -94,6 +94,7 @@ void BPlusTree::handleSplit(BNode *p) {
             fa = newNode();
             fa->insertChild(0, p, 0);
             fa->insertChild(1, rnode, 0);
+            root = fa;
         }
         fa->update();
         handleSplit(fa);
@@ -121,6 +122,10 @@ void BPlusTree::printTree(BNode *s, map<BNode*, int> &mp, int &lastInd) {
         str = str + to_string(mp[s->ch[i]]) + "-" + to_string(s->keys[i]) + " ";
     }
     Logger::logger.debug("%s", str.c_str());
+    for (int i = 0; i < s->chnum; ++i) {
+        if (s->ch[i] != nullptr)
+            printTree(s->ch[i], mp, lastInd);
+    }
 }
 
 void BPlusTree::printTree() {
