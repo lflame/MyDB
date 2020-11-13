@@ -174,24 +174,24 @@ void Tests::testRM2() {
 
 void Tests::testBPlusTree() {
     BPlusTree tree;
-    tree.insertNode(5);
-    tree.insertNode(2);
-    tree.insertNode(9);
-    tree.insertNode(4);
-    tree.insertNode(3);
-    tree.insertNode(6);
-    tree.insertNode(7);
-    tree.insertNode(8);
-    tree.insertNode(-1);
-    tree.insertNode(10);
-    tree.insertNode(11);
-    tree.insertNode(12);
-    tree.insertNode(13);
-    tree.insertNode(14);
-    tree.insertNode(15);
-    tree.insertNode(16);
-    tree.insertNode(17);
-    tree.insertNode(18);
-    tree.insertNode(19);
+    tree.insertKey(5);
+    tree.insertKey(2);
+    tree.insertKey(9);
+    tree.insertKey(4);
+    tree.insertKey(3);
+    tree.insertKey(6);
+    tree.insertKey(7);
+    tree.insertKey(8);
+    tree.insertKey(-1);
+    tree.insertKey(10);
+    tree.insertKey(11);
+    tree.insertKey(12);
+    tree.insertKey(13);
+    tree.insertKey(14);
+    tree.insertKey(15);
+    tree.insertKey(16);
+    tree.insertKey(17);
+    tree.insertKey(18);
+    tree.insertKey(19);
     tree.printTree();
 }

@@ -36,7 +36,7 @@ bool BNode::isLeaf() {
 }
 
 void BNode::insertChild(int c, BNode *p, int k) {
-    assert(chnum <= HIGH+1);
+    assert(chnum <= HIGH+1 && c <= chnum);
     for (int i = chnum-1; i >= c; --i) {
         ch[i+1] = ch[i];
         keys[i+1] = keys[i];
@@ -44,6 +44,15 @@ void BNode::insertChild(int c, BNode *p, int k) {
     ch[c] = p;
     keys[c] = k;
     ++chnum;
+}
+
+void BNode::deleteChild(int c) {
+    assert(c >= 0 && c < chnum);
+    for (int i = c; i < chnum - 1; ++i) {
+        ch[i] = ch[i+1];
+        keys[i] = keys[i+1];
+    }
+    --chnum;
 }
 
 BPlusTree::BPlusTree()  {
@@ -71,11 +80,8 @@ BNode* BPlusTree::findNode(int k) {
 }
 
 void BPlusTree::handleSplit(BNode *p) {
-    int lnum = 0;
     if (p->chnum == BNode::HIGH + 1) {
-        lnum = (BNode::HIGH+1) / 2;
-    }
-    if (lnum != 0) {
+        int lnum = (BNode::HIGH+1) / 2;
         // 将 p 分裂为两部分，前 lnum 为一部分
         BNode *rnode = newNode(), *fa = p->fa;
         for (int i = lnum; i < p->chnum; ++i) {
@@ -101,12 +107,28 @@ void BPlusTree::handleSplit(BNode *p) {
     }
 }
 
-void BPlusTree::insertNode(int k) {
+void BPlusTree::handleMerge(BNode *p) {
+    if (p != root) {
+        if (p->chnum == BNode::LOW - 1) {
+
+        }
+    }
+}
+
+void BPlusTree::insertKey(int k) {
     BNode* p = findNode(k);
     int c = p->keyToChild(k);
     assert(p->keys[c] != k);  // 保证没有重复键
     p->insertChild(c, nullptr, k);
     handleSplit(p);
+}
+
+void BPlusTree::deleteKey(int k) {
+    BNode* p = findNode(k);
+    int c = p->keyToChild(k);
+    assert(p->keys[c] == k);  // 保证被删除的键存在
+    p->deleteChild(c);
+    handleMerge(p);
 }
 
 void BPlusTree::printTreeUpdateInd(BNode *s, std::map<BNode*, int>& mp, int &lastInd) {

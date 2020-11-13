@@ -33,6 +33,9 @@ struct BPlusTreeNode {
 
     // 将节点 p 及键 k 分别插入到 ch[c] 和 keys[c] 上，p 可以为 nullptr
     void insertChild(int c, BNode *p, int k);
+
+    // 删除 ch[c] 和 keys[c]
+    void deleteChild(int c);
 };
 
 class BPlusTree {
@@ -45,10 +48,14 @@ public:
     // 找到键 k 所在的叶子节点，若不存在该键则返回其应该在的叶子节点处
     BNode* findNode(int k);
     BNode* newNode();
-    // 插入键 k 作为新节点
-    void insertNode(int k);
+    // 插入键 k
+    void insertKey(int k);
+    // 删除键 k
+    void deleteKey(int k);
     // 处理上溢的分裂
     void handleSplit(BNode *p);
+    // 处理下溢的合并
+    void handleMerge(BNode *p);
     /*
      * 打印整棵树，便于调试
      * 格式为：
