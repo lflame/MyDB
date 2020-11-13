@@ -83,7 +83,6 @@ void BPlusTree::handleSplit(BNode *p) {
         }
         p->chnum = lnum;
         // 更新连边和信息
-        rnode->fa = fa;
         p->update(), rnode->update();
         if (fa) {
             int c = fa->getChildInd(p) + 1;
@@ -96,6 +95,7 @@ void BPlusTree::handleSplit(BNode *p) {
             fa->insertChild(1, rnode, 0);
             root = fa;
         }
+        p->fa = rnode->fa = fa;
         fa->update();
         handleSplit(fa);
     }
@@ -110,13 +110,12 @@ void BPlusTree::insertNode(int k) {
 }
 
 void BPlusTree::printTreeUpdateInd(BNode *s, std::map<BNode*, int>& mp, int &lastInd) {
-    if (s == nullptr) mp[s] = 0;
-    else if (mp.find(s) == mp.end()) mp[s] = ++lastInd;
+    if (mp.find(s) == mp.end()) mp[s] = ++lastInd;
 }
 
 void BPlusTree::printTree(BNode *s, map<BNode*, int> &mp, int &lastInd) {
     printTreeUpdateInd(s, mp, lastInd);
-    string str = to_string(mp[s]) + ": " + to_string(s->chnum) + " ";
+    string str = to_string(mp[s]) + ": " + to_string(mp[s->fa]) + " " + to_string(s->chnum) + " ";
     for (int i = 0; i < s->chnum; ++i) {
         printTreeUpdateInd(s->ch[i], mp, lastInd);
         str = str + to_string(mp[s->ch[i]]) + "-" + to_string(s->keys[i]) + " ";
@@ -130,6 +129,7 @@ void BPlusTree::printTree(BNode *s, map<BNode*, int> &mp, int &lastInd) {
 
 void BPlusTree::printTree() {
     map<BNode*, int> mp;
+    mp[nullptr] = 0;
     Logger::logger.info("Start printTree.");
     Logger::logger.debug("%d", ndnum);
     int lastInd = 0;
