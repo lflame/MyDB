@@ -65,7 +65,7 @@ BNode* BPlusTree::findNode(int k) {
     BNode *s = root;
     while (!s->isLeaf()) {
         int c = s->keyToChild(k);
-        s = s->ch[c];
+        s = s->ch[std::min(c, s->chnum-1)];
     }
     return s;
 }
@@ -118,7 +118,7 @@ void BPlusTree::printTree(BNode *s, map<BNode*, int> &mp, int &lastInd) {
     string str = to_string(mp[s]) + ": " + to_string(mp[s->fa]) + " " + to_string(s->chnum) + " ";
     for (int i = 0; i < s->chnum; ++i) {
         printTreeUpdateInd(s->ch[i], mp, lastInd);
-        str = str + to_string(mp[s->ch[i]]) + "-" + to_string(s->keys[i]) + " ";
+        str = str + to_string(mp[s->ch[i]]) + "|" + to_string(s->keys[i]) + " ";
     }
     Logger::logger.debug("%s", str.c_str());
     for (int i = 0; i < s->chnum; ++i) {

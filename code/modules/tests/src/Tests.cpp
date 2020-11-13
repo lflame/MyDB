@@ -180,5 +180,18 @@ void Tests::testBPlusTree() {
     tree.insertNode(4);
     tree.insertNode(3);
     tree.insertNode(6);
+    tree.insertNode(7);
+    tree.insertNode(8);
+    tree.insertNode(-1);
+    tree.insertNode(10);
+    tree.insertNode(11);
+    tree.insertNode(12);
+    tree.insertNode(13);
+    tree.insertNode(14);
+    tree.insertNode(15);
+    tree.insertNode(16);
+    tree.insertNode(17);
+    tree.insertNode(18);
+    tree.insertNode(19);
     tree.printTree();
 }
