@@ -4,12 +4,13 @@
 struct BPlusTreeNode {
     static const int HIGH = 5, LOW = HIGH/2;
     // 此处开数组使用 HIGH+1 是为了更方便处理上溢的情况，而稳定状态下至多使用 HIGH
-    BPlusTreeNode *ch[HIGH+1];
+    BPlusTreeNode *ch[HIGH+1], *fa;
     int keys[HIGH+1], chnum;
 
     BPlusTreeNode() {
         chnum = 0;
-        for (int i = 0; i < HIGH; ++i) ch[i] = nullptr;
+        for (int i = 0; i <= HIGH; ++i) ch[i] = nullptr;
+        fa = nullptr;
     }
 
     // 利用子节点信息更新当前节点信息
@@ -17,6 +18,9 @@ struct BPlusTreeNode {
 
     // 找到键 k 对应所在的子节点，返回子节点下标
     int keyToChild(int k);
+
+    // 判断 p 为当前节点的哪个儿子，返回子节点下标
+    int getChildInd(BPlusTreeNode *p);
 
     // 将节点 p 及键 k 分别插入到 ch[c] 和 keys[c] 上，p 可以为 nullptr
     void insertChild(int c, BPlusTreeNode *p, int k);

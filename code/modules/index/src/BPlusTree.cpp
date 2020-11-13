@@ -18,6 +18,12 @@ int BNode::keyToChild(int k) {
     return ret;
 }
 
+int BNode::getChildInd(BNode *p) {
+    for (int i = 0; i < chnum; ++i) if (ch[i] == p) return i;
+    assert(0);
+    return -1;
+}
+
 void BNode::insertChild(int c, BNode *p, int k) {
     assert(chnum <= HIGH+1);
     for (int i = chnum; i >= c; --i) {
@@ -52,7 +58,33 @@ BNode* BPlusTree::findNode(int k) {
 }
 
 void BPlusTree::handleSplit(BNode *p) {
-    
+    int lnum = 0;
+    if (p->chnum == BNode::HIGH + 1) {
+        lnum = (BNode::HIGH+1) / 2;
+    }
+    if (lnum != 0) {
+        // 将 p 分裂为两部分，前 lnum 为一部分
+        BNode *rnode = newNode(), *fa = p->fa;
+        for (int i = lnum; i < p->chnum; ++i) {
+            rnode->insertChild(i-lnum, p->ch[i], p->keys[i]);
+        }
+        p->chnum = lnum;
+        // 更新连边和信息
+        rnode->fa = fa;
+        p->update(), rnode->update();
+        if (fa) {
+            int c = fa->getChildInd(p) + 1;
+            fa->insertChild(c, rnode, 0);
+        } else {
+            // 处理为根的情况
+            assert(p == root);
+            fa = newNode();
+            fa->insertChild(0, p, 0);
+            fa->insertChild(1, rnode, 0);
+        }
+        fa->update();
+        handleSplit(fa);
+    }
 }
 
 void BPlusTree::insertNode(int k) {
