@@ -48,6 +48,7 @@ public:
     // 找到键 k 所在的叶子节点，若不存在该键则返回其应该在的叶子节点处
     BNode* findNode(int k);
     BNode* newNode();
+    void deleteNode(BNode* p);
     // 插入键 k
     void insertKey(int k);
     // 删除键 k

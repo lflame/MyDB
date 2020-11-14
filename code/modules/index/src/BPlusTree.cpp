@@ -70,6 +70,11 @@ BNode* BPlusTree::newNode() {
     return ret;
 }
 
+void BPlusTree::deleteNode(BNode* p) {
+    --ndnum;
+    delete p;
+}
+
 BNode* BPlusTree::findNode(int k) {
     BNode *s = root;
     while (!s->isLeaf()) {
@@ -110,7 +115,48 @@ void BPlusTree::handleSplit(BNode *p) {
 void BPlusTree::handleMerge(BNode *p) {
     if (p != root) {
         if (p->chnum == BNode::LOW - 1) {
-
+            BNode *fa = p->fa;
+            int c = fa->getChildInd(p);
+            bool suc = false;
+            // 先考虑子树转移
+            if (c != 0) {
+                BNode *q = fa->ch[c-1];
+                if (q->chnum > BNode::LOW) {
+                    suc = true;
+                    p->insertChild(0, q->ch[q->chnum-1], q->keys[q->chnum-1]);
+                    q->deleteChild(q->chnum-1);
+                    fa->update();
+                }
+            }
+            if (c != fa->chnum-1 && !suc) {
+                BNode *q = fa->ch[c+1];
+                if (q->chnum > BNode::LOW) {
+                    suc = true;
+                    p->insertChild(0, q->ch[0], q->keys[0]);
+                    q->deleteChild(0);
+                    fa->update();
+                }
+            }
+            // 再考虑合并，保证 p 左 q 右
+            if (!suc) {
+                BNode *q = nullptr;
+                int delInd = -1;
+                if (c != 0) q = p, p = fa->ch[c-1], delInd = c;
+                else q = fa->ch[c+1], delInd = c+1;
+                for (int i = 0; i < q->chnum; ++i) {
+                    p->insertChild(p->chnum, q->ch[i], q->keys[i]);
+                }
+                fa->deleteChild(delInd);
+                fa->update();
+                deleteNode(q);
+            }
+        }
+    } else {
+        if (!p->isLeaf() && p->chnum == 1) {
+            BNode *q = p->ch[0];
+            deleteNode(root);
+            root = q;
+            root->fa = nullptr;
         }
     }
 }
