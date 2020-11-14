@@ -7,17 +7,18 @@
 struct BPlusTreeNode;
 
 typedef BPlusTreeNode BNode;
+typedef AttrListWithRID BKey;
 
 struct BPlusTreeNode {
     static const int HIGH = 5, LOW = HIGH/2;
     // 此处开数组使用 HIGH+1 是为了更方便处理上溢的情况，而稳定状态下至多使用 HIGH
     BPlusTreeNode *ch[HIGH+1], *fa;
     int chnum;
-    AttrList keys[HIGH+1];
+    BKey keys[HIGH+1];
 
     BPlusTreeNode(int attrNum) {
         chnum = 0;
-        for (int i = 0; i <= HIGH; ++i) ch[i] = nullptr, keys[i].init(attrNum);
+        for (int i = 0; i <= HIGH; ++i) ch[i] = nullptr, keys[i].attrList.init(attrNum);
         fa = nullptr;
     }
 
@@ -25,7 +26,7 @@ struct BPlusTreeNode {
     void update();
 
     // 找到键 k 对应所在的子节点，返回子节点下标
-    int keyToChild(int k);
+    int keyToChild(BKey k);
 
     // 判断 p 为当前节点的哪个儿子，返回子节点下标
     int getChildInd(BNode *p);
@@ -34,7 +35,7 @@ struct BPlusTreeNode {
     bool isLeaf();
 
     // 将节点 p 及键 k 分别插入到 ch[c] 和 keys[c] 上，p 可以为 nullptr
-    void insertChild(int c, BNode *p, int k);
+    void insertChild(int c, BNode *p, BKey k);
 
     // 删除 ch[c] 和 keys[c]
     void deleteChild(int c);
@@ -46,22 +47,23 @@ public:
     BNode *root;
     // 节点数
     int ndnum;
-    // 数据的类型和长度
-    AttrType attrType;
-    int attrLen;
+    // 只关注其中的类型和长度
+    AttrList attrList;
+    // 用于方便代码书写
+    BKey defaultKey;
 
-    BPlusTree(AttrType attrType, int attrLen);
+    BPlusTree(AttrList attrList);
     ~BPlusTree();
     // 回收整棵树
     void deleteTree(BNode *p);
     // 找到键 k 所在的叶子节点，若不存在该键则返回其应该在的叶子节点处
-    BNode* findNode(int k);
+    BNode* findNode(BKey k);
     BNode* newNode();
     void deleteNode(BNode *p);
     // 插入键 k
-    void insertKey(int k);
+    void insertKey(BKey k);
     // 删除键 k
-    void deleteKey(int k);
+    void deleteKey(BKey k);
     // 处理上溢的分裂
     void handleSplit(BNode *p);
     // 处理下溢的合并
@@ -69,7 +71,7 @@ public:
     // 调用 update 直到根
     void updateToRoot(BNode *p);
     /*
-     * 打印整棵树，便于调试
+     * 打印整棵树，便于调试，注意只处理了单个数据且为 int 的情况
      * 格式为：
      *   节点数
      *   节点编号: 父亲编号 子节点数目 [子节点编号-键、...]

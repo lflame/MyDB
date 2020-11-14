@@ -37,12 +37,13 @@ class Attr {
     AttrType attrType;
     int attrLen;
 
-    Attr() {}
+    Attr() { data = nullptr; }
     Attr(void *data, AttrType type, int len) {
         this->data = data;
         this->attrType = type;
         this->attrLen = len;
     }
+    // **注意需要为网络序**
     Attr(int *value) {
         data = value;
         attrType = AttrType::INT;
@@ -112,6 +113,10 @@ class AttrList {
         delete[] attrs;
     }
 
+    Attr& operator[](int ind) {
+        return attrs[ind];
+    }
+
     AttrList& operator=(const AttrList &other) {
         init(other.attrNum);
         for (int i = 0; i < attrNum; ++i)
@@ -163,6 +168,40 @@ class AttrList {
             return true;
         }
         return false;
+    }
+};
+
+// 目前该类在 RM 模块中未使用，而仅在 IX 模块中使用
+// 主要用于建立联合索引
+class AttrListWithRID {
+  public:
+    AttrList attrList;
+    RID rid;
+
+    AttrListWithRID() {}
+
+    AttrListWithRID(AttrList attrList, RID rid) {
+        this->attrList = attrList;
+        this->rid = rid;
+    }
+
+    bool operator==(const AttrListWithRID &other) const {
+        return attrList == other.attrList && rid == other.rid;
+    }
+    bool operator<(const AttrListWithRID &other) const {
+        return attrList < other.attrList || (attrList == other.attrList && rid < other.rid);
+    }
+    bool operator>(const AttrListWithRID &other) const {
+        return attrList > other.attrList || (attrList == other.attrList && rid > other.rid);
+    }
+    bool operator<=(const AttrListWithRID &other) const {
+        return attrList < other.attrList || (attrList == other.attrList && rid <= other.rid);
+    }
+    bool operator>=(const AttrListWithRID &other) const {
+        return attrList > other.attrList || (attrList == other.attrList && rid >= other.rid);
+    }
+    bool operator!=(const AttrListWithRID &other) const {
+        return !(*this==other);
     }
 };
 

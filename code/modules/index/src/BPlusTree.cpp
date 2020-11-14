@@ -1,5 +1,6 @@
 #include "cassert"
 #include "cstring"
+#include "netinet/in.h"
 #include "BPlusTree.h"
 #include "Logger.h"
 #include "RID.h"
@@ -17,7 +18,7 @@ void BNode::update() {
     }
 }
 
-int BNode::keyToChild(int k) {
+int BNode::keyToChild(BKey k) {
     int ret;
     for (ret = 0; ret < chnum; ++ret) {
         if (k <= keys[ret]) break;
@@ -35,7 +36,7 @@ bool BNode::isLeaf() {
     return chnum == 0 || ch[0] == nullptr;
 }
 
-void BNode::insertChild(int c, BNode *p, int k) {
+void BNode::insertChild(int c, BNode *p, BKey k) {
     assert(chnum <= HIGH+1 && c <= chnum);
     for (int i = chnum-1; i >= c; --i) {
         ch[i+1] = ch[i];
@@ -56,11 +57,10 @@ void BNode::deleteChild(int c) {
     --chnum;
 }
 
-BPlusTree::BPlusTree(AttrType attrType, int attrLen)  {
+BPlusTree::BPlusTree(AttrList attrList)  {
     ndnum = 0;
     root = newNode();
-    this->attrType = attrType;
-    this->attrLen = attrLen;
+    this->attrList = attrList;
 }
 
 BPlusTree::~BPlusTree() {
@@ -76,7 +76,7 @@ void BPlusTree::deleteTree(BNode *p) {
 }
 
 BNode* BPlusTree::newNode() {
-    BNode *ret = new BNode();
+    BNode *ret = new BNode(attrList.attrNum);
     ++ndnum;
     return ret;
 }
@@ -86,7 +86,7 @@ void BPlusTree::deleteNode(BNode* p) {
     delete p;
 }
 
-BNode* BPlusTree::findNode(int k) {
+BNode* BPlusTree::findNode(BKey k) {
     BNode *s = root;
     while (!s->isLeaf()) {
         int c = s->keyToChild(k);
@@ -108,13 +108,13 @@ void BPlusTree::handleSplit(BNode *p) {
         // 更新连边和信息
         if (fa) {
             int c = fa->getChildInd(p) + 1;
-            fa->insertChild(c, rnode, 0);
+            fa->insertChild(c, rnode, defaultKey);
         } else {
             // 处理为根的情况
             assert(p == root);
             fa = newNode();
-            fa->insertChild(0, p, 0);
-            fa->insertChild(1, rnode, 0);
+            fa->insertChild(0, p, defaultKey);
+            fa->insertChild(1, rnode, defaultKey);
             root = fa;
         }
         p->fa = rnode->fa = fa;
@@ -185,7 +185,7 @@ void BPlusTree::updateToRoot(BNode *p) {
     }
 }
 
-void BPlusTree::insertKey(int k) {
+void BPlusTree::insertKey(BKey k) {
     BNode* p = findNode(k);
     int c = p->keyToChild(k);
     assert(p->keys[c] != k);  // 保证没有重复键
@@ -193,7 +193,7 @@ void BPlusTree::insertKey(int k) {
     handleSplit(p);
 }
 
-void BPlusTree::deleteKey(int k) {
+void BPlusTree::deleteKey(BKey k) {
     BNode* p = findNode(k);
     int c = p->keyToChild(k);
     assert(p->keys[c] == k);  // 保证被删除的键存在
@@ -210,7 +210,9 @@ void BPlusTree::printTree(BNode *s, map<BNode*, int> &mp, int &lastInd) {
     string str = to_string(mp[s]) + ": " + to_string(mp[s->fa]) + " " + to_string(s->chnum) + " ";
     for (int i = 0; i < s->chnum; ++i) {
         printTreeUpdateInd(s->ch[i], mp, lastInd);
-        str = str + to_string(mp[s->ch[i]]) + "|" + to_string(s->keys[i]) + " ";
+        int tmp = *(int*)(s->keys[i].attrList[0].data);
+        tmp = ntohl(tmp);
+        str = str + to_string(mp[s->ch[i]]) + "|" + to_string(tmp) + " ";
     }
     Logger::logger.debug("%s", str.c_str());
     for (int i = 0; i < s->chnum; ++i) {
