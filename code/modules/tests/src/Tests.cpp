@@ -14,7 +14,8 @@ void Tests::testAll() {
     // testLogger();
     // testRM1();
     // testRM2();
-    testBPlusTree();
+    testBPlusTree1();
+    // testBPlusTree2();
     Logger::logger.debug("测试通过");
 }
 
@@ -172,7 +173,9 @@ void Tests::testRM2() {
     Logger::logger.info("End testRM2.");
 }
 
-void Tests::testBPlusTree() {
+void Tests::testBPlusTree1() {
+    Logger::logger.info("Start testBPlusTree1.");
+
     BPlusTree tree;
     tree.insertKey(5);
     tree.insertKey(2);
@@ -193,5 +196,25 @@ void Tests::testBPlusTree() {
     tree.insertKey(17);
     tree.insertKey(18);
     tree.insertKey(19);
+    tree.insertKey(25);
     tree.printTree();
+
+    Logger::logger.info("End testBPlusTree1.");
+}
+
+void Tests::testBPlusTree2() {
+    Logger::logger.info("Start testBPlusTree2.");
+
+    BPlusTree tree;
+    tree.insertKey(5);
+    tree.insertKey(2);
+    tree.insertKey(9);
+    tree.insertKey(4);
+    tree.insertKey(3);
+    tree.insertKey(6);
+    tree.deleteKey(6);
+    tree.deleteKey(9);
+    tree.printTree();
+
+    Logger::logger.info("End testBPlusTree2.");
 }

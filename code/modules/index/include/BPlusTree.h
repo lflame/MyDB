@@ -57,6 +57,8 @@ public:
     void handleSplit(BNode *p);
     // 处理下溢的合并
     void handleMerge(BNode *p);
+    // 调用 update 直到根
+    void updateToRoot(BNode *p);
     /*
      * 打印整棵树，便于调试
      * 格式为：

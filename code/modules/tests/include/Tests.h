@@ -13,8 +13,10 @@ class Tests {
     // 测试属性比较
     void testRM2();
 
-    // 测试 B+ 树
-    void testBPlusTree();
+    // 测试 B+ 树的插入
+    void testBPlusTree1();
+    // 测试 B+ 树的删除
+    void testBPlusTree2();
 };
 
 #endif

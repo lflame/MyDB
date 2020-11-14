@@ -42,6 +42,7 @@ void BNode::insertChild(int c, BNode *p, int k) {
         keys[i+1] = keys[i];
     }
     ch[c] = p;
+    if (p != nullptr) p->fa = this;
     keys[c] = k;
     ++chnum;
 }
@@ -85,6 +86,7 @@ BNode* BPlusTree::findNode(int k) {
 }
 
 void BPlusTree::handleSplit(BNode *p) {
+    if (p == nullptr) return;
     if (p->chnum == BNode::HIGH + 1) {
         int lnum = (BNode::HIGH+1) / 2;
         // 将 p 分裂为两部分，前 lnum 为一部分
@@ -94,7 +96,6 @@ void BPlusTree::handleSplit(BNode *p) {
         }
         p->chnum = lnum;
         // 更新连边和信息
-        p->update(), rnode->update();
         if (fa) {
             int c = fa->getChildInd(p) + 1;
             fa->insertChild(c, rnode, 0);
@@ -109,10 +110,13 @@ void BPlusTree::handleSplit(BNode *p) {
         p->fa = rnode->fa = fa;
         fa->update();
         handleSplit(fa);
+    } else {
+        updateToRoot(p);
     }
 }
 
 void BPlusTree::handleMerge(BNode *p) {
+    if (p == nullptr) return;
     if (p != root) {
         if (p->chnum == BNode::LOW - 1) {
             BNode *fa = p->fa;
@@ -150,6 +154,8 @@ void BPlusTree::handleMerge(BNode *p) {
                 fa->update();
                 deleteNode(q);
             }
+        } else {
+            updateToRoot(p);
         }
     } else {
         if (!p->isLeaf() && p->chnum == 1) {
@@ -158,6 +164,13 @@ void BPlusTree::handleMerge(BNode *p) {
             root = q;
             root->fa = nullptr;
         }
+    }
+}
+
+void BPlusTree::updateToRoot(BNode *p) {
+    while(p != nullptr) {
+        p->update();
+        p = p->fa;
     }
 }
 
