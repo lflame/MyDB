@@ -136,7 +136,7 @@ void BPlusTree::handleMerge(BNode *p) {
                 BNode *q = fa->ch[c+1];
                 if (q->chnum > BNode::LOW) {
                     suc = true;
-                    p->insertChild(0, q->ch[0], q->keys[0]);
+                    p->insertChild(p->chnum, q->ch[0], q->keys[0]);
                     q->deleteChild(0);
                     fa->update();
                 }
@@ -154,6 +154,7 @@ void BPlusTree::handleMerge(BNode *p) {
                 fa->update();
                 deleteNode(q);
             }
+            handleMerge(fa);
         } else {
             updateToRoot(p);
         }

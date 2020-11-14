@@ -13,9 +13,9 @@ class Tests {
     // 测试属性比较
     void testRM2();
 
-    // 测试 B+ 树的插入
+    // 较小数据
     void testBPlusTree1();
-    // 测试 B+ 树的删除
+    // 较大数据
     void testBPlusTree2();
 };
 

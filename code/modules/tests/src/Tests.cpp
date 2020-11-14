@@ -14,8 +14,8 @@ void Tests::testAll() {
     // testLogger();
     // testRM1();
     // testRM2();
-    testBPlusTree1();
-    // testBPlusTree2();
+    // testBPlusTree1();
+    testBPlusTree2();
     Logger::logger.debug("测试通过");
 }
 
@@ -174,7 +174,43 @@ void Tests::testRM2() {
 }
 
 void Tests::testBPlusTree1() {
+    if (BPlusTreeNode::HIGH != 5) {
+        Logger::logger.info("testBPlusTree1 needs HIGH to be 5. Skip.");
+        return;
+    }
     Logger::logger.info("Start testBPlusTree1.");
+
+    BPlusTree tree;
+    tree.insertKey(5);
+    tree.insertKey(2);
+    tree.insertKey(9);
+    tree.insertKey(4);
+    tree.insertKey(3);
+    tree.insertKey(6);
+    tree.deleteKey(6);
+    tree.deleteKey(9);
+    tree.printTree();
+    assert(tree.ndnum == 3);
+    assert(tree.root->keys[1] == 5);
+    tree.deleteKey(5);
+    tree.printTree();
+    assert(tree.ndnum == 1);
+    tree.deleteKey(3);
+    tree.deleteKey(2);
+    tree.deleteKey(4);
+    assert(tree.ndnum == 1 && tree.root->chnum == 0);
+    tree.printTree();
+
+    Logger::logger.info("End testBPlusTree1.");
+}
+
+void Tests::testBPlusTree2() {
+    if (BPlusTreeNode::HIGH != 5) {
+        Logger::logger.info("testBPlusTree2 needs HIGH to be 5. Skip.");
+        return;
+    }
+
+    Logger::logger.info("Start testBPlusTree2.");
 
     BPlusTree tree;
     tree.insertKey(5);
@@ -197,24 +233,40 @@ void Tests::testBPlusTree1() {
     tree.insertKey(18);
     tree.insertKey(19);
     tree.insertKey(25);
+    assert(tree.root->keys[1] == 25);
+    assert(tree.ndnum == 9);
+    assert(tree.root->ch[1]->ch[2]->keys[3] == 25);
+
+    tree.deleteKey(12);
+    tree.deleteKey(13);
     tree.printTree();
-
-    Logger::logger.info("End testBPlusTree1.");
-}
-
-void Tests::testBPlusTree2() {
-    Logger::logger.info("Start testBPlusTree2.");
-
-    BPlusTree tree;
-    tree.insertKey(5);
-    tree.insertKey(2);
-    tree.insertKey(9);
-    tree.insertKey(4);
-    tree.insertKey(3);
-    tree.insertKey(6);
-    tree.deleteKey(6);
-    tree.deleteKey(9);
+    assert(tree.root->ch[1]->ch[0]->keys[1] == 14);
+    
+    tree.deleteKey(15);
     tree.printTree();
+    assert(tree.root->ch[1]->ch[1]->keys[1] == 17);
+    assert(tree.root->ch[1]->keys[1] == 17);
+
+    tree.deleteKey(14);
+    tree.printTree();
+    assert(tree.ndnum == 8);
+    assert(tree.root->ch[1]->chnum == 2);
+    assert(tree.root->ch[1]->ch[0]->keys[1] == 16);
+
+    tree.deleteKey(25);
+    tree.printTree();
+    assert(tree.root->keys[1] == 19);
+
+    tree.deleteKey(19);
+    tree.printTree();
+    assert(tree.root->ch[1]->ch[0]->chnum == 2);
+    assert(tree.root->ch[0]->chnum == 3);
+
+    tree.deleteKey(18);
+    tree.printTree();
+    assert(tree.root->keys[1] == 17);
+    assert(tree.ndnum == 7);
+    assert(tree.root->ch[0]->chnum == 2);
 
     Logger::logger.info("End testBPlusTree2.");
 }
