@@ -2,6 +2,7 @@
 #define _B_PLUS_TREE_H_
 
 #include "map"
+#include "AttrType.h"
 
 struct BPlusTreeNode;
 
@@ -11,11 +12,12 @@ struct BPlusTreeNode {
     static const int HIGH = 5, LOW = HIGH/2;
     // 此处开数组使用 HIGH+1 是为了更方便处理上溢的情况，而稳定状态下至多使用 HIGH
     BPlusTreeNode *ch[HIGH+1], *fa;
-    int keys[HIGH+1], chnum;
+    int chnum;
+    AttrList keys[HIGH+1];
 
-    BPlusTreeNode() {
+    BPlusTreeNode(int attrNum) {
         chnum = 0;
-        for (int i = 0; i <= HIGH; ++i) ch[i] = nullptr;
+        for (int i = 0; i <= HIGH; ++i) ch[i] = nullptr, keys[i].init(attrNum);
         fa = nullptr;
     }
 
@@ -40,15 +42,22 @@ struct BPlusTreeNode {
 
 class BPlusTree {
 public:
+    // 根节点
     BNode *root;
-    int ndnum;  // 节点数
+    // 节点数
+    int ndnum;
+    // 数据的类型和长度
+    AttrType attrType;
+    int attrLen;
 
-    BPlusTree();
+    BPlusTree(AttrType attrType, int attrLen);
     ~BPlusTree();
+    // 回收整棵树
+    void deleteTree(BNode *p);
     // 找到键 k 所在的叶子节点，若不存在该键则返回其应该在的叶子节点处
     BNode* findNode(int k);
     BNode* newNode();
-    void deleteNode(BNode* p);
+    void deleteNode(BNode *p);
     // 插入键 k
     void insertKey(int k);
     // 删除键 k

@@ -56,13 +56,23 @@ void BNode::deleteChild(int c) {
     --chnum;
 }
 
-BPlusTree::BPlusTree()  {
+BPlusTree::BPlusTree(AttrType attrType, int attrLen)  {
     ndnum = 0;
     root = newNode();
+    this->attrType = attrType;
+    this->attrLen = attrLen;
 }
 
 BPlusTree::~BPlusTree() {
-    // TODO: deleteTree(root);
+    deleteTree(root);
+}
+
+void BPlusTree::deleteTree(BNode *p) {
+    for (int i = 0; i < p->chnum; ++i) {
+        if (p->ch[i] != nullptr)
+            deleteTree(p->ch[i]);
+    }
+    delete p;
 }
 
 BNode* BPlusTree::newNode() {
