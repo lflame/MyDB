@@ -61,7 +61,7 @@ TODO: 存储到 log 文件中。
 
 ### 设计思路
 
-#### 文件存储
+#### 数据文件存储
 
 * 文件的第一页存储: 每个记录的字节数 recSize、每一页存储的记录最大个数 recNumPerPage、总记录个数 recNumTot、总页数 pageNum，以及非满页链表表头对应的页数 usablePageHeader(均为 int 型，页数从 0 开始计数)，另外链表指针值为 -1 时表示空指针。
 * 每个数据页存储： 开头存储三个 int，分别为 prevUsablePage 和 nextUsablePage，以及 usableSlotNum 表示还剩余多少个空余槽, 接着使用 recNumPerPage 位表示每个记录槽是否存放记录(1 表空闲, 0 表占用)，接下来 8 位对齐之后共 recNumPerPage 个记录槽，每个记录槽消耗 recSize 个字节。注意需要满足 `12 + (recNumPerPage+7)/8*8 + recSize*recNumPerPage <= PAGE_SIZE`
@@ -104,3 +104,20 @@ enum class CompOp {
 实现了类 RecordManager，并且在其中实现了 `_readIntFromPage/_writeIntToPage` 和 `_readDataFromPage/_writeDataToPage` 用于对于页的较底层的读写(将调用 BufferReader/BufferWriter 的静态函数实现)，以及其它对页中存储的参数进行直接操作的较高层的读写，例如 `_readFileHeaderPage(FileHeaderPageParameterType type)` 和 `_readDataPagePointer(int pageId, bool isPrev, int &pointer);` 等。
 
 在读写操作的基础上，只需要按照上面设计思路进行设计即可，唯一需要注意的就是链表的维护。
+
+## 索引模块
+
+### 设计思路
+
+#### 索引文件存储
+
+* 文件的第一页存储: 节点个数 ndnum，属性个数 attrNum, 第一个属性的类型（0, 1, 2 分别表示 INT, FLOAT, STRING）和长度, ..., 第 attrNum 个属性的类型和长度；
+* 其它页，每一页对应一个 B+ 树节点，存储: 父亲节点对应页标号 faPage, 儿子数目 chnum, 第一个儿子对应的页标号和键, ..., 第 chnum 个儿子对应的页标号和键，其中键按 attrNum 个属性直接给出（因为类型和长度都已知）并且最后给出 RID 的两个 int。
+
+### 代码实现
+
+主要的类为 IndexManager、IndexHandler、BPlusTree。
+
+* IndexManager: 顶层的索引管理类，用于新建索引、删除索引、打开索引、关闭索引等；
+* IndexHandler: 用于管理单个索引文件，当打开索引时会返回一个 IndexHandler 实例，提供对索引进行插入、删除、查询、写入磁盘等操作；
+* BPlusTree: B+树，被 IndexHandler 用于维护索引。
