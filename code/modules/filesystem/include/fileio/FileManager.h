@@ -7,6 +7,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include "cassert"
 //#include "../MyLinkList.h"
 using namespace std;
 class FileManager {
@@ -18,6 +19,7 @@ private:
 	MyBitMap* fm;
 	MyBitMap* tm;
 	int _createFile(const char* name) {
+		assert(access(name, 0) == 0);
 		FILE* f = fopen(name, "a+");
 		if (f == NULL) {
 			cout << "fail" << endl;

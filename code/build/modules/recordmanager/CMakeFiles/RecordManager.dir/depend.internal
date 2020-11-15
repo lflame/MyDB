@@ -4,6 +4,7 @@
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/AttrType.cpp.o
  ../modules/recordmanager/include/AttrType.h
  ../modules/recordmanager/include/BufferReader.h
+ ../modules/recordmanager/include/RID.h
  /home/yyr/Work/MyDB/code/modules/recordmanager/src/AttrType.cpp
 modules/recordmanager/CMakeFiles/RecordManager.dir/src/BufferReader.cpp.o
  ../modules/recordmanager/include/BufferReader.h

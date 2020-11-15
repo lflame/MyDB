@@ -2,6 +2,7 @@
 #define _ATTR_TYPE_H_
 
 #include "cassert"
+#include "RID.h"
 
 #define MAX_STRING_LEN 255
 

@@ -43,6 +43,8 @@ unistd.h
 -
 fcntl.h
 -
+cassert
+../modules/filesystem/include/fileio/cassert
 
 ../modules/filesystem/include/utils/MyBitMap.h
 iostream
@@ -77,6 +79,10 @@ cstdio
 ../modules/logger/include/cstdio
 
 ../modules/recordmanager/include/AttrType.h
+cassert
+../modules/recordmanager/include/cassert
+RID.h
+../modules/recordmanager/include/RID.h
 
 ../modules/recordmanager/include/BufferReader.h
 
@@ -93,6 +99,16 @@ AttrType.h
 ../modules/recordmanager/include/AttrType.h
 RID.h
 ../modules/recordmanager/include/RID.h
+
+/home/yyr/Work/MyDB/code/modules/recordmanager/src/AttrType.cpp
+AttrType.h
+/home/yyr/Work/MyDB/code/modules/recordmanager/src/AttrType.h
+cstring
+/home/yyr/Work/MyDB/code/modules/recordmanager/src/cstring
+cmath
+/home/yyr/Work/MyDB/code/modules/recordmanager/src/cmath
+BufferReader.h
+/home/yyr/Work/MyDB/code/modules/recordmanager/src/BufferReader.h
 
 /home/yyr/Work/MyDB/code/modules/recordmanager/src/RecordManager.cpp
 RecordManager.h
