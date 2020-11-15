@@ -77,7 +77,7 @@ void BPlusTree::deleteTree(BNode *p) {
 
 BNode* BPlusTree::newNode() {
     BNode *ret = new BNode(attrList.attrNum);
-    ++ndnum;
+    ret->id = ++ndnum;
     return ret;
 }
 

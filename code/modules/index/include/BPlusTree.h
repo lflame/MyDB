@@ -13,11 +13,12 @@ struct BPlusTreeNode {
     static const int HIGH = 5, LOW = HIGH/2;
     // 此处开数组使用 HIGH+1 是为了更方便处理上溢的情况，而稳定状态下至多使用 HIGH
     BPlusTreeNode *ch[HIGH+1], *fa;
-    int chnum;
+    int id, chnum;
     BKey keys[HIGH+1];
 
     BPlusTreeNode(int attrNum) {
         chnum = 0;
+        id = -1;
         for (int i = 0; i <= HIGH; ++i) ch[i] = nullptr, keys[i].attrList.init(attrNum);
         fa = nullptr;
     }

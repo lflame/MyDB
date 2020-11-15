@@ -8,10 +8,21 @@ IndexHandler::IndexHandler(const char *dataName, int indexNo, string indexPath) 
     this->indexPath = indexPath;
     this->bufPageManager = new BufPageManager(new FileManager);
     this->bufPageManager->fileManager->openFile(indexPath.c_str(), this->fileId);
+    this->tree = nullptr;
 }
 
 IndexHandler::~IndexHandler() {
     delete bufPageManager;
+    if (tree != nullptr) delete tree;
+}
+
+void IndexHandler::_readFileHeaderPage() {
+    assert(tree == nullptr);  // 保证读取文件头只发生一次
+}
+
+
+void IndexHandler::_writeFileHeaderPage() {
+
 }
 
 void IndexHandler::_readIntFromPage(int pageId, int offset, int &value) {
